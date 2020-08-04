@@ -293,7 +293,7 @@ describe('', () => {
 
   test(`Function 'groupByKey' should group objects from array by key 'language'
   input: groupByKey(books, 'language')`, () => {
-    expect(groupByKey(books, 'language')).toEqual({
+    expect(groupByKey(books, 'sdsada')).toEqual({
       'Japanese': [{
         'author': 'Yasunari Kawabata',
         'country': 'Japan',
