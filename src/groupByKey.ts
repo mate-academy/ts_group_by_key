@@ -1,7 +1,17 @@
 'use strict';
 
-// describe interfaces
+export function groupByKey<T>(array: T[], key: string) {
+  interface Group {
+    [key: string]: T[];
+  };
 
-export function groupByKey(array, key) {
-  // write code here;
+  const group: Group = {};
+
+  array.forEach((item: T) => {
+    group[item[key]] = array.filter(
+      (el: T) => el[key] === item[key]
+    );
+  });
+
+  return group;
 }
