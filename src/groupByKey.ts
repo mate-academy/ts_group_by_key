@@ -12,13 +12,11 @@ interface ItemsGroup<T> {
 export function groupByKey(array: Item[], key: string) {
   const result = {} as ItemsGroup<Item>;
 
-  const keys = array.map(el => el[key].toString());
-
-  for (const filteredKey of keys) {
-    result[filteredKey] = [];
-
-    array.filter(el => el[key].toString() === filteredKey)
-      .forEach(el => result[filteredKey].push(el));
+  for (const item of array) {
+    if (!result.hasOwnProperty(item[key])) {
+      result[item[key]] = [];
+    }
+    result[item[key]].push(item);
   }
 
   return result;
