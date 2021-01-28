@@ -1,7 +1,23 @@
+/* eslint-disable no-console */
 'use strict';
 
-// describe interfaces
+interface Item {
+  [key: string]: any
+}
 
-export function groupByKey(array, key) {
-  // write code here;
+interface ItemsGroup<T> {
+  [key: string]: T[]
+}
+
+export function groupByKey(array: Item[], key: string) {
+  const result = {} as ItemsGroup<Item>;
+
+  for (const item of array) {
+    if (!result.hasOwnProperty(item[key])) {
+      result[item[key]] = [];
+    }
+    result[item[key]].push(item);
+  }
+
+  return result;
 }

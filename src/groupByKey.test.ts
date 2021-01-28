@@ -1,4 +1,5 @@
 'use strict';
+export {};
 /* global require, describe, test, expect */
 
 const students = require('./students');
