@@ -11,11 +11,11 @@ interface ItemGroup<T> {
 export function groupByKey(array: Item[], key: keyof Item) {
   const resultObj: ItemGroup<Item> = {};
 
-  for (const book of array) {
-    if (!(book[key] in resultObj)) {
-      resultObj[book[key]] = [];
+  for (const obj of array) {
+    if (!(obj[key] in resultObj)) {
+      resultObj[obj[key]] = [];
     };
-    resultObj[book[key]].push(book);
+    resultObj[obj[key]].push(obj);
   };
 
   return resultObj;
