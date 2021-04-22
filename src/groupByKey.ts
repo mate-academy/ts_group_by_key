@@ -8,16 +8,17 @@ interface ItemsGroup<T> extends Item{
   [key: string]: T[]
 }
 
-export function groupByKey<T>(
-  array: Array<T>, key: string): ItemsGroup<T> {
+export function groupByKey<T, K extends keyof T>(
+  array: Array<T>, key: K): ItemsGroup<T> {
   const result: ItemsGroup<T> = {};
 
   for (const obj of array) {
     const resultKey = obj[key];
 
-    if (resultKey in result) {
+    if ((typeof resultKey === 'string' || typeof resultKey === 'number')
+      && resultKey in result) {
       result[resultKey].push(obj);
-    } else {
+    } else if (typeof resultKey === 'string' || typeof resultKey === 'number') {
       result[resultKey] = [obj];
     }
   }
