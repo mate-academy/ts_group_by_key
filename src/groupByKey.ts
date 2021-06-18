@@ -9,7 +9,7 @@ interface ItemsGroup<T> {
 };
 
 export function groupByKey(array: Item[], key: keyof Item) {
-  const result = {} as ItemsGroup<Item>;
+  const result: ItemsGroup<Item> = {};
 
   for (const item of array) {
     if (!result[item[key]]) {
