@@ -1,7 +1,22 @@
 'use strict';
 
-// describe interfaces
+interface Item {
+  [key: string]: any
+};
 
-export function groupByKey(array, key) {
-  // write code here;
+interface ItemsGroup<T> {
+  [key: string]: T[]
+};
+
+export function groupByKey(array: Item[], key: keyof Item) {
+  const result = {} as ItemsGroup<Item>;
+
+  for (const item of array) {
+    if (!result[item[key]]) {
+      result[item[key]] = [];
+    }
+    result[item[key]].push(item);
+  }
+
+  return result;
 }
