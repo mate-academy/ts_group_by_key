@@ -56,13 +56,6 @@
     "grades": [5, 5, 4, 5, 4, 4, 4, 4, 5, 4, 5, 4]
   },
   {
-    "name": "Jessica",
-    "surname": "Buxton",
-    "age": 26,
-    "married": true,
-    "grades": [5, 5, 4, 5, 4, 4, 4, 4, 5, 4, 5, 4]
-  },
-  {
     "name": "Pamela",
     "surname": "Casillas",
     "age": 24,

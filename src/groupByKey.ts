@@ -1,7 +1,7 @@
-'use strict';
+interface Item {
+  [key: string]: any;
+}
 
-// describe interfaces
-
-export function groupByKey(array, key) {
+export function groupByKey(items, field) {
   // write code here;
 }
