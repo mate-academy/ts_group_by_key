@@ -2,17 +2,15 @@ interface Item {
   [key: string]: any,
 }
 
-interface GroupedByKey<T> {
-  [key: string] : T[],
+interface GroupedByKey {
+  [key: string] : Item[],
 }
 
-export function groupByKey <T extends Item>(
-  items: T[],
-  field: keyof T,
-): GroupedByKey<T> {
-  const resultObject: GroupedByKey<T> = {};
+export function groupByKey(items: Item[], field: keyof Item)
+  : GroupedByKey {
+  const resultObject: GroupedByKey = {};
 
-  items.forEach((item: T) => {
+  items.forEach((item: Item) => {
     if (item[field] in resultObject) {
       resultObject[item[field]].push(item);
     } else {
