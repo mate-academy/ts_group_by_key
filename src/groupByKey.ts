@@ -14,6 +14,7 @@ export function groupByKey<T extends Item, K extends keyof T>(
       accumulator[value] = (accumulator[value] || []).concat(item);
 
       return accumulator;
-    }, {} as Record<T[K], T[]>
+    }, 
+    {} as Record<T[K], T[]>
   );
 }
