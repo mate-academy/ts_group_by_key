@@ -2,7 +2,7 @@ export interface Item {
   [key: string]: any;
 }
 
-export function groupByKey(items: Array<Item>, field: string): Item {
+export function groupByKey(items: Array<Item>, field: keyof Item): Item {
   return items.reduce((x, y) => {
     const result = {
       ...x,
