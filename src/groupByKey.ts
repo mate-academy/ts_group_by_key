@@ -6,7 +6,10 @@ interface GroupObjByKey {
   [key: string]: Item[];
 }
 
-export function groupByKey(items: Item[], field: keyof Item): Item {
+export function groupByKey<T, K extends keyof Item>(
+  items: T[],
+  field: K,
+): Item {
   const resultObject: GroupObjByKey = {};
 
   items.forEach((item: Item) => {
