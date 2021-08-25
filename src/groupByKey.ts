@@ -2,11 +2,14 @@ interface Item {
   [key: string]: any,
 }
 
-export function groupByKey<T extends Item, K extends keyof T>(
-  items: T[],
-  field: K,
-):
-  Record<T[K], T[]> {
+type ItemsGroup<T> = {
+  [key: string]: T[]
+};
+
+export function groupByKey(
+  items: Item[],
+  field: keyof Item,
+): ItemsGroup<Item> {
   return items.reduce(
     (accumulator, item) => {
       const value = item[field];
@@ -15,6 +18,6 @@ export function groupByKey<T extends Item, K extends keyof T>(
 
       return accumulator;
     },
-    {} as Record<T[K], T[]>
+    {},
   );
 }
