@@ -12,10 +12,9 @@ export function groupByKey(items: Item[], field: keyof Item): NewItem {
   items.forEach((item) => {
     if (!groupedObj[item[field]]) {
       groupedObj[item[field]] = [];
-      groupedObj[item[field]].push(item);
-    } else {
-      groupedObj[item[field]].push(item);
     }
+
+    groupedObj[item[field]].push(item);
   });
 
   return groupedObj;
