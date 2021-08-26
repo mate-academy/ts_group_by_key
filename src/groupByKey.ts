@@ -1,7 +1,21 @@
 interface Item {
-  [key: string]: any;
+  [key: string]: string | number;
 }
 
-export function groupByKey(items, field) {
-  // write code here;
+interface Grouped {
+  [key: string]: Item[];
+}
+
+export function groupByKey(items: Item[], field: keyof Item): Grouped {
+  const result: Grouped = {};
+
+  items.forEach((item: Item) => {
+    if (item[field] in result) {
+      result[item[field]].push(item);
+    } else {
+      result[item[field]] = [item];
+    }
+  });
+
+  return result;
 }
