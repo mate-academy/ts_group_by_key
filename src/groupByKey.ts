@@ -8,8 +8,7 @@ export function groupByKey(items: Item[], field: keyof Item): Item {
 
   items.forEach((item: Item) => {
     if (!sortArray[item[field]]) {
-      sortArray[item[field]] = [];
-      sortArray[item[field]].push(item);
+      sortArray[item[field]] = [item];
     } else {
       sortArray[item[field]].push(item);
     }
