@@ -21,15 +21,3 @@ export function groupByKey(
 
   return checked;
 }
-
-// type Obj1 = {
-//   x: number,
-//   y: number,
-//   z: number,
-// };
-
-// type KeyOption = keyof Obj1;
-
-// let key: KeyOption = 'x';
-
-// key = 'b';
