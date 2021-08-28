@@ -1,21 +1,14 @@
 interface Item {
-  [key: string]: any;
+  [key: string]: any,
 }
 
-interface ItemsGroup {
-  [key: string]: Item[],
-}
+type ItemsGroup<Type> = {
+  [key: string]: Type[]
+};
 
-export function groupByKey(items: Item[], field: keyof Item): object {
-  const resultObject: ItemsGroup = {};
-
-  items.forEach((item: Item) => {
-    if (!resultObject[item[field]]) {
-      resultObject[item[field]] = [];
-    }
-
-    resultObject[item[field]].push(item);
-  });
-
-  return resultObject;
-}
+export const groupByKey = (
+  items: Item[],
+  field: keyof Item,
+): ItemsGroup<Item> => Object
+  .fromEntries(Array.from(new Set(items.map((item) => item[field])))
+    .map((key) => [key, items.filter((item) => item[field] === key)]));
