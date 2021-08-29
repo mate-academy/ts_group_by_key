@@ -4,7 +4,7 @@ interface Item {
 
 export function groupByKey(items: Item[], field: string): object {
   // write code here;
-  const obj: object = {};
+  const obj: Item = {};
 
   items.forEach((element: Item) => {
     if (!obj[element[field]]) {
