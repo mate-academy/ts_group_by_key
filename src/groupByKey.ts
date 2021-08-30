@@ -3,7 +3,7 @@ interface Item {
 }
 
 interface Groups {
-  [key: string]: Item,
+  [key: string]: Item[],
 }
 
 export function groupByKey(items: Item[], field: keyof Item): Groups {
@@ -14,7 +14,7 @@ export function groupByKey(items: Item[], field: keyof Item): Groups {
     if (!itemsGroupedByKey[element[field]]) {
       itemsGroupedByKey[element[field]] = [];
     }
-    itemsGroupedByKey[element[field]].push(field);
+    itemsGroupedByKey[element[field]].push(element);
   });
 
   return itemsGroupedByKey;
