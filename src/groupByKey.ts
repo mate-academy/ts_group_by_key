@@ -7,7 +7,7 @@ interface SortItem {
 }
 
 export function groupByKey(items: Item[], field: keyof Item): SortItem {
-  const sortByKey: Item = { };
+  const sortByKey: SortItem = {};
 
   items.forEach((element: Item) => {
     if (!sortByKey[element[field]]) {
