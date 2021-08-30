@@ -2,8 +2,13 @@ interface Item {
   [key: string]: any;
 }
 
-export function groupByKey(items: Item[], field: keyof Item): Item {
+interface Result {
+  [key: string]: Item[];
+}
+
+export function groupByKey(items: Item[], field: keyof Item): Result {
   // write code here;
+
   const result: Item = {};
 
   items.forEach((item: Item) => {
