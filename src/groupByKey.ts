@@ -9,7 +9,7 @@ interface Result {
 export function groupByKey(items: Item[], field: keyof Item): Result {
   // write code here;
 
-  const result: Item = {};
+  const result: Result = {};
 
   items.forEach((item: Item) => {
     if (!result[item[field]]) {
