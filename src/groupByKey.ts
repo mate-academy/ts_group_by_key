@@ -9,13 +9,13 @@ interface FilterBy {
 export function groupByKey(items: Item[], field: keyof Item): FilterBy {
   const filteredByKey: FilterBy = {};
 
-  for (let i: number = 0; i < items.length; i += 1) {
-    if (items[i][field] in filteredByKey) {
-      filteredByKey[items[i][field]].push(items[i]);
+  items.forEach((item) => {
+    if (item[field] in filteredByKey) {
+      filteredByKey[item[field]].push(item);
     } else {
-      filteredByKey[items[i][field]] = [items[i]];
+      filteredByKey[item[field]] = [item];
     }
-  }
+  });
 
   return filteredByKey;
 }
