@@ -1,5 +1,4 @@
 "use strict";
-exports.__esModule = true;
 exports.groupByKey = void 0;
 function groupByKey(items, field) {
     var sortByKey = {};
