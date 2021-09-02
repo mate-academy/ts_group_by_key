@@ -8,10 +8,9 @@ export function groupByKey(items: Item[], field: string): object {
   items.forEach((x: Item) => {
     if (!finalArray[x[field]]) {
       finalArray[x[field]] = [];
-      finalArray[x[field]].push(x);
-    } else {
-      finalArray[x[field]].push(x);
     }
+
+    finalArray[x[field]].push(x);
   });
 
   return finalArray;
