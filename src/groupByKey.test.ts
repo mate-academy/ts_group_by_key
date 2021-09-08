@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import students from './students.json';
 import books from './books.json';
+import { Item } from './interface';
 
 const { groupByKey } = require('./groupByKey');
 
@@ -24,10 +25,10 @@ describe('Function "groupByKey"', () => {
     expect(Object.keys(groupedData))
       .toEqual(['22', '23', '24', '26']);
 
-    expect(groupedData[22].map((student) => `${student.name} ${student.age}`))
+    expect(groupedData[22].map((student: Item) => `${student.name} ${student.age}`))
       .toEqual(['Willie 22', 'Glenn 22']);
 
-    expect(groupedData[26].map((student) => `${student.name} ${student.age}`))
+    expect(groupedData[26].map((student: Item) => `${student.name} ${student.age}`))
       .toEqual(['Jessica 26']);
   });
 
