@@ -1,10 +1,10 @@
-interface Obj {}
+interface ItemGroup {}
 
 interface Item {
-  [key: string]: Obj[];
+  [key: string]: ItemGroup[];
 }
 
-export function groupByKey(items: Obj, field: string): Item {
+export function groupByKey(items: ItemGroup, field: keyof Item): ItemGroup {
   const result: Item = {};
 
   items.forEach((item) => {
