@@ -1,10 +1,9 @@
 # Group by key
 
-Implement a function `groupByKey`, that takes an array of similar objects 
-(`books`, `students`, etc.) and a string `field` that is one of possible item 
-keys (`field: keyof Item`). The function return an object where all the 
-items having the same `value` in a given `field` are group in common array under
-a key equals to the `value`.
+Implement a function `groupByKey` that takes an array of similar objects 
+(`books`, `students`, etc.) and a string `key` that is one of possible item 
+keys (`key: keyof T`). The function returns an object where all the items are
+grouped by values stored under a given `key` (see the examples).
 ```js
 const books = [
   { id: 1, color: 'red', country: 'Ukraine' },
@@ -13,6 +12,7 @@ const books = [
 ;
 ```
 ```js
+// Group books by color
 groupByKey(books, 'color') === {
   'red': [
     { id: 1, color: 'red', country: 'Ukraine' },
@@ -24,6 +24,7 @@ groupByKey(books, 'color') === {
 }
 ```
 ```js
+// group books by country
 groupByKey(books, 'country') === {
   'Ukraine': [
     { id: 1, color: 'red', country: 'Ukraine' },

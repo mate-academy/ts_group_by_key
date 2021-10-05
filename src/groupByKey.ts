@@ -1,7 +1,7 @@
-interface Item {
-  [key: string]: any;
-}
+type GroupsMap<T> = {
+  [key: string]: T[];
+};
 
-export function groupByKey(items, field) {
+export function groupByKey(items, key) {
   // write code here;
 }
