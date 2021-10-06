@@ -9,14 +9,14 @@ export function groupByKey<T>(
   const newObj: GroupsMap<T> = {};
 
   items.forEach((item: T) => {
-    const x: string = `${item[key]}`;
+    const itemKey: string = `${item[key]}`;
 
-    if (!newObj[x]) {
-      newObj[x] = [];
+    if (!newObj[itemKey]) {
+      newObj[itemKey] = [];
     }
 
-    if (newObj[x]) {
-      newObj[x].push(item);
+    if (newObj[itemKey]) {
+      newObj[itemKey].push(item);
     }
   });
 
