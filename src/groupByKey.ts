@@ -9,11 +9,14 @@ type GroupsMap<T> = {
 export function groupByKey(items: Item[], key: keyof Item):GroupsMap<Item> {
   const groups: GroupsMap<Item> = {};
 
-  items.forEach((obj) => {
-    if (!Object.prototype.hasOwnProperty.call(groups, obj[key])) {
-      groups[obj[key]] = [];
+  items.forEach((item) => {
+    const value = String(item[key]);
+
+    if (!(value in groups)) {
+      groups[value] = [];
     }
-    groups[obj[key]].push(obj);
+
+    groups[value].push(item);
   });
 
   return groups;
