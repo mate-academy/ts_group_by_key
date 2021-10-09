@@ -2,15 +2,17 @@ interface Item {
   [key: string]: any;
 }
 
-export function groupByKey(items: Item[], field: string): Item {
-  const arrFieldsValues = items
-    .map((item) => item[field])
-    .filter((i, n) => !items.includes(i, n + 1));
-
+export function groupByKey(items: Item[], field: keyof Item): Item {
   const result: Item = {};
 
-  arrFieldsValues.forEach((elem) => {
-    result[elem] = items.filter((item) => item[field] === elem);
+  items.forEach((item) => {
+    const modifiedKey = `${item[field]}`;
+
+    if (result[modifiedKey]) {
+      result[modifiedKey].push(item);
+    } else {
+      result[modifiedKey] = [item];
+    }
   });
 
   return result;
