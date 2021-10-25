@@ -15,12 +15,6 @@ export function groupByKey(items: Array<{}>, key: keyof K): GroupsMap<Object> {
     }
 
     result[keyStr].push(element);
-
-    // for (const resKey in result) {
-    //   if (keyStr === resKey.toString()) {
-    //     result[resKey].push(element);
-    //   }
-    // }
   });
 
   return result;
