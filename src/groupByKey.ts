@@ -2,6 +2,20 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-export function groupByKey(items, key) {
-  // write code here;
+type K = string | number;
+
+export function groupByKey(items: Array<{}>, key: keyof K): GroupsMap<Object> {
+  const result: GroupsMap<Object> = {};
+
+  items.forEach((element: Object) => {
+    const keyStr = element[key].toString();
+
+    if (!result[keyStr]) {
+      result[keyStr] = [];
+    }
+
+    result[keyStr].push(element);
+  });
+
+  return result;
 }
