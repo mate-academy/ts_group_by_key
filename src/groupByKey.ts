@@ -3,13 +3,13 @@ type GroupsMap<T> = {
 };
 
 export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
-  return items.reduce((GroupedItems: GroupsMap<T>, item) => {
+  return items.reduce((groupedItems: GroupsMap<T>, item) => {
     const itemKey = `${item[key]}`;
 
-    if (itemKey in GroupedItems) {
-      GroupedItems[itemKey].push(item);
+    if (itemKey in groupedItems) {
+      groupedItems[itemKey].push(item);
 
-      return GroupedItems;
+      return groupedItems;
     }
 
     const mapping: GroupsMap<T> = {};
@@ -17,7 +17,7 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
     mapping[itemKey] = [item];
 
     return {
-      ...GroupedItems,
+      ...groupedItems,
       ...mapping,
     };
   }, {});
