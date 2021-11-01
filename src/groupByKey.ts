@@ -8,11 +8,13 @@ export function groupByKey<T>(
 ): GroupsMap<T> {
   const groupedByKey: GroupsMap<T> = {};
 
-  items.forEach((student) => {
-    if (groupedByKey[String(student[key])] === undefined) {
-      groupedByKey[String(student[key])] = [student];
+  items.forEach((item) => {
+    const currentKey = String(item[key]);
+
+    if (groupedByKey[currentKey] === undefined) {
+      groupedByKey[currentKey] = [item];
     } else {
-      groupedByKey[String(student[key])].push(student);
+      groupedByKey[currentKey].push(item);
     }
   });
 
