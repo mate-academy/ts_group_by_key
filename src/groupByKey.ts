@@ -2,19 +2,11 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-interface Student {
-  name: string;
-  surname: string;
-  age: number;
-  married: boolean;
-  grades: number[];
-}
-
-export function groupByKey(
-  items: Student[],
-  key: keyof Student,
-): GroupsMap<Student> {
-  const groupedByKey: GroupsMap<Student> = {};
+export function groupByKey<T>(
+  items: T[],
+  key: keyof T,
+): GroupsMap<T> {
+  const groupedByKey: GroupsMap<T> = {};
 
   items.forEach((student) => {
     if (groupedByKey[String(student[key])] === undefined) {
