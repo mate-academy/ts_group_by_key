@@ -7,11 +7,12 @@ export function groupByKey<T>(items :T[], key: keyof T): GroupsMap<T> {
 
   items.forEach((item) => {
     const value = item[key];
+    const currentValue = `${value}`;
 
-    if (!newObj[`${value}`]) {
-      newObj[`${value}`] = [];
+    if (!newObj[currentValue]) {
+      newObj[currentValue] = [];
     }
-    newObj[`${value}`].push(item);
+    newObj[currentValue].push(item);
   });
 
   return newObj;
