@@ -15,13 +15,5 @@ export function groupByKey<K>(items:K[], key: keyof K): GroupsMap<K> {
     }
   });
 
-  // return items.reduce((prev: GroupsMap<K>, cur) => {
-  //   const keyofItems = `${cur[key]}`;
-  //
-  //   prev[keyofItems] = [...prev[keyofItems] || [], cur];
-  //
-  //   return prev;
-  // }, {});
-
   return result;
 }
