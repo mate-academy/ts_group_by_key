@@ -2,17 +2,13 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-type InputMap<T> = {
-  [key: string]: T;
-};
-
-export function groupByKey(
-  items: InputMap<string>[], key: string,
-): GroupsMap<object> {
-  const result: GroupsMap<object> = {};
+export function groupByKey<T>(
+  items: T[], key: keyof T,
+): GroupsMap<T> {
+  const result: GroupsMap<T> = {};
 
   items.forEach((item) => {
-    const newKey: string = String(item[key]);
+    const newKey = String(item[key]);
 
     if (Object.keys(result).includes(newKey)) {
       result[newKey].push(item);
