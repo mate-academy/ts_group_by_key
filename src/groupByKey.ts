@@ -1,9 +1,9 @@
-interface Item {
-  [key: string]: any;
-}
+type GroupsMap<T> = {
+  [key: string]: T[];
+};
 
-export function groupByKey(items: Item[], key: keyof Item): Item {
-  const groupedObject: Item = {};
+export function groupByKey<T>(items: T[], key: keyof {}): GroupsMap<T> {
+  const groupedObject: GroupsMap<T> = {};
 
   items.forEach((item) => {
     if (!groupedObject[item[key]]) {
