@@ -24,10 +24,10 @@ describe('Function "groupByKey"', () => {
     expect(Object.keys(groupedData))
       .toEqual(['22', '23', '24', '26']);
 
-    expect(groupedData[22].map((student) => `${student.name} ${student.age}`))
+    expect(groupedData[22].map((student: { name: any; age: any; }) => `${student.name} ${student.age}`))
       .toEqual(['Willie 22', 'Glenn 22']);
 
-    expect(groupedData[26].map((student) => `${student.name} ${student.age}`))
+    expect(groupedData[26].map((student: { name: any; age: any; }) => `${student.name} ${student.age}`))
       .toEqual(['Jessica 26']);
   });
 
