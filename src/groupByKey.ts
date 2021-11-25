@@ -2,14 +2,16 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-export function groupByKey<T>(items: T[], key: keyof {}): GroupsMap<T> {
+export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   const groupedObject: GroupsMap<T> = {};
 
   items.forEach((item) => {
-    if (!groupedObject[item[key]]) {
-      groupedObject[item[key]] = [];
+    const objValues = String(item[key]);
+
+    if (!groupedObject[objValues]) {
+      groupedObject[objValues] = [];
     }
-    groupedObject[item[key]].push(item);
+    groupedObject[objValues].push(item);
   });
 
   return groupedObject;
