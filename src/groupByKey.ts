@@ -6,7 +6,7 @@ type GroupsMap<T> = {
 export function groupByKey<T>(
   items: T[],
   key: keyof T,
-): GroupsMap<T> | undefined {
+): GroupsMap<T> {
   const groupedItems: GroupsMap<T> = {};
 
   return items.reduce((group, item) => {
