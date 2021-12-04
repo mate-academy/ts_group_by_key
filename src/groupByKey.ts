@@ -1,13 +1,13 @@
-type GroupsMap<T> = {
+type GroupByKey<T> = {
   [key: string]: T[];
 };
 
-export function groupByKey(items: any[], key: string): {} {
-  const result: GroupsMap<string> = {};
+export function groupByKey<T>(items: T[], key: keyof T): GroupByKey<T> {
+  const result: GroupByKey<T> = {};
 
-  for (const item of items) {
-    result[item[key]] = items.filter(obj => obj[key] === item[key]);
-  }
+  items.forEach((item) => {
+    result[String(item[key])] = items.filter((obj) => obj[key] === item[key]);
+  });
 
   return result;
 }
