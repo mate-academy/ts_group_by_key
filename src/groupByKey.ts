@@ -2,14 +2,16 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-export function groupByKey(
-  items: object[],
-  key: keyof object,
-): GroupsMap<object> {
-  const shelves: GroupsMap<object> = {};
+export function groupByKey<E>(
+  items: E[],
+  key: keyof E,
+): GroupsMap<E> {
+  const shelves: GroupsMap<E> = {};
 
-  items.forEach((item: object) => {
-    shelves[item[key]] = items.filter(
+  items.forEach((item: E) => {
+    const index = `${item[key]}`;
+
+    shelves[index] = items.filter(
       (el): boolean => el[key] === item[key],
     );
   });
