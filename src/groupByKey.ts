@@ -25,13 +25,13 @@ type Item = Student | Book;
 export function groupByKey(items: Item[], key: keyof Item): GroupsMap<Item> {
   const groups: GroupsMap<Item> = {};
 
-  for (const item of items) {
-    if (!groups.hasOwnProperty(item[key])) {
+  items.forEach((item) => {
+    if (!Object.prototype.hasOwnProperty.call(groups, item[key])) {
       groups[item[key]] = [];
     }
 
     groups[item[key]].push(item);
-  }
+  });
 
   return groups;
 }
