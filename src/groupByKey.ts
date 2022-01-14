@@ -8,7 +8,7 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   items.forEach((item) => {
     const groupKey = `${item[key]}`;
 
-    if (group[groupKey] === undefined) {
+    if (!group[groupKey]) {
       group[groupKey] = [];
     }
     group[groupKey].push(item);
