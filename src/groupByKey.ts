@@ -11,10 +11,12 @@ export function groupByKey<Item>(
   const res: GroupsMap<Item> = {};
 
   items.forEach((item: Item) => {
-    if (item[key] in res) {
-      res[item[key]].push(item);
+    const objProp = String(item[key]);
+
+    if (objProp in res) {
+      res[objProp].push(item);
     } else {
-      res[item[key]] = [item];
+      res[objProp] = [item];
     }
   });
 
