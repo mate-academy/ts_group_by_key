@@ -1,32 +1,13 @@
-type GroupsMap<T> = {
-  [key: string]: T[];
+type Item = {
+  [key: string]: any;
 };
 
-interface Student {
-  name: string,
-  surname: string,
-  age: number,
-  married: boolean,
-  grades: number[],
-}
+type GroupsMap = {
+  [key: string]: Item[];
+};
 
-interface Book {
-  author: string,
-  country: string,
-  imageLink: string,
-  language: string,
-  title: string,
-  pages: number,
-  year: number,
-}
-
-type Item = Student | Book;
-
-export function groupByKey(
-  items: Item[],
-  key: keyof Item,
-): GroupsMap<Item> {
-  const result: GroupsMap<Item> = {};
+export function groupByKey(items: Item[], key: keyof Item): GroupsMap {
+  const result: GroupsMap = {};
 
   items.forEach((item) => {
     const k = item[key];
