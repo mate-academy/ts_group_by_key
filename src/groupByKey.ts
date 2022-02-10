@@ -9,7 +9,7 @@ export function groupByKey<T>(
 ): GroupsMap<T> {
   const groupObject: GroupsMap<T> = {};
 
-  items.forEach((item) => {
+  for (const item of items) {
     const rasultKey = item[key];
 
     if (!groupObject[rasultKey]) {
@@ -17,7 +17,7 @@ export function groupByKey<T>(
     }
 
     groupObject[rasultKey].push(item);
-  });
+  }
 
   return groupObject;
 }
