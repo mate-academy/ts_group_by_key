@@ -10,13 +10,13 @@ export function groupByKey<T>(
   const groupObject: GroupsMap<T> = {};
 
   for (const item of items) {
-    const rasultKey = item[key];
+    const resultKey = item[key];
 
-    if (!groupObject[rasultKey]) {
-      groupObject[rasultKey] = [];
+    if (!groupObject[resultKey]) {
+      groupObject[resultKey] = [];
     }
 
-    groupObject[rasultKey].push(item);
+    groupObject[resultKey].push(item);
   }
 
   return groupObject;
