@@ -7,13 +7,13 @@ export function groupByKey<T>(items: T[], key: keyof T)
   const sortedObject: GroupsMap<T> = {};
 
   items.forEach((item) => {
-    const value = String(item[key]);
+    const newKey = String(item[key]);
 
-    if (!(value in sortedObject)) {
-      sortedObject[value] = [];
+    if (!(newKey in sortedObject)) {
+      sortedObject[newKey] = [];
     }
 
-    sortedObject[value].push(item);
+    sortedObject[newKey].push(item);
   });
 
   return sortedObject;
