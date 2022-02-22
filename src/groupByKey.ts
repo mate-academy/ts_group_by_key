@@ -6,7 +6,11 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   const result: GroupsMap<T> = {};
 
   items.forEach((item) => {
-    result[String(item[key])] = items.filter((obj) => obj[key] === item[key]);
+    if (!result[String(item[key])]) {
+      result[String(item[key])] = [];
+    }
+
+    result[String(item[key])].push(item);
   });
 
   return result;
