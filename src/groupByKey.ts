@@ -1,32 +1,20 @@
-// import { type } from "os";
-
 type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-interface Books {
-  author: string,
-  country: string,
-  imageLink: string,
-  language: string,
-  pages: number,
-  title: string,
-  year: number
-}
+export function groupByKey<T>(items: any[], key: keyof T): GroupsMap<T> {
+  const values: string[] = [];
+  const groupedData: GroupsMap<T> = {};
 
-type Key = 'author' | 'country' | 'imageLink' |
-'language' | 'pages' | 'title' | 'year';
-
-export function groupByKey(items: Books[], key: Key): GroupsMap<Books> {
-  const result: GroupsMap<Books> = {};
-
-  const mass: any[] = [];
-
-  items.forEach((element: Books) => mass.push(element[key]));
-
-  mass.forEach((element) => {
-    result[element] = items.filter((el: Books) => el[key] === element);
+  items.forEach((item) => {
+    if (!values.includes(item[key])) {
+      values.push(item[key]);
+    }
   });
 
-  return result;
+  values.forEach((value) => {
+    groupedData[value] = items.filter((item) => item[key] === value);
+  });
+
+  return groupedData;
 }
