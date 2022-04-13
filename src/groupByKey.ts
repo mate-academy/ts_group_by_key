@@ -1,26 +1,37 @@
+// type GroupsMap<T> = {
+//   [key: string]: T[];
+// };
+
+// export function groupByKey <T>(items: T[], key: string): GroupsMap<T> {
+//   const grouppedItems: GroupsMap<T> = {};
+
+//   items.forEach((item) => {
+//     if (!grouppedItems.hasOwnProperty(item[key])) {
+//       grouppedItems[item[key]]
+//         = items.filter((element) => item[key] === element[key]);
+//     }
+//   });
+
+//   return grouppedItems;
+// }
+
 type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-type MainTypesUnion = string | number;
+export function groupByKey<T>(
+  items: T[],
+  key: string,
+): GroupsMap<T> {
+  const groupedItems: GroupsMap<T> = {};
 
-type ItemObj = {
-  [key: string]: MainTypesUnion;
-};
+  items.forEach((item) => {
+    if (!Object.prototype.hasOwnProperty.call(groupedItems, item[key])) {
+      groupedItems[item[key]] = [];
+    }
 
-export function groupByKey(items: ItemObj[], key: string): GroupsMap<ItemObj> {
-  const allKeysArray: MainTypesUnion[] = items.map((item) => item[key]);
+    groupedItems[item[key]].push(item);
+  });
 
-  const uniqKeysArray: MainTypesUnion[]
-    = allKeysArray.filter((elem, index) => allKeysArray
-      .indexOf(elem) === index);
-
-  const grouppedItems: GroupsMap<ItemObj> = {};
-
-  for (let i: number = 0; i < uniqKeysArray.length; i += 1) {
-    grouppedItems[uniqKeysArray[i]]
-      = items.filter((item) => item[key] === uniqKeysArray[i]);
-  }
-
-  return grouppedItems;
+  return groupedItems;
 }
