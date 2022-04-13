@@ -1,37 +1,16 @@
-// type GroupsMap<T> = {
-//   [key: string]: T[];
-// };
-
-// export function groupByKey <T>(items: T[], key: string): GroupsMap<T> {
-//   const grouppedItems: GroupsMap<T> = {};
-
-//   items.forEach((item) => {
-//     if (!grouppedItems.hasOwnProperty(item[key])) {
-//       grouppedItems[item[key]]
-//         = items.filter((element) => item[key] === element[key]);
-//     }
-//   });
-
-//   return grouppedItems;
-// }
-
 type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-export function groupByKey<T>(
-  items: T[],
-  key: string,
-): GroupsMap<T> {
-  const groupedItems: GroupsMap<T> = {};
+export function groupByKey <R>(items: R[], key: string): GroupsMap<R> {
+  const grouppedItems: GroupsMap<R> = {};
 
   items.forEach((item) => {
-    if (!Object.prototype.hasOwnProperty.call(groupedItems, item[key])) {
-      groupedItems[item[key]] = [];
+    if (!Object.prototype.hasOwnProperty.call(grouppedItems, item[key])) {
+      grouppedItems[item[key]]
+        = items.filter((element) => item[key] === element[key]);
     }
-
-    groupedItems[item[key]].push(item);
   });
 
-  return groupedItems;
+  return grouppedItems;
 }
