@@ -8,11 +8,11 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   items.forEach((person) => {
     const resultKey = String(person[key]);
 
-    if (Object.prototype.hasOwnProperty.call(result, resultKey)) {
-      result[resultKey].push(person);
-    } else {
-      result[resultKey] = [person];
+    if (!Object.prototype.hasOwnProperty.call(result, resultKey)) {
+      result[resultKey] = [];
     }
+
+    result[resultKey].push(person);
   });
 
   return result;
