@@ -1,4 +1,6 @@
 /* eslint-disable max-len */
+/* eslint-disable */
+
 import students from './students.json';
 import books from './books.json';
 
