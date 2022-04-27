@@ -4,12 +4,12 @@ type GroupsMap<T> = {
 
 export function groupByKey<T>(
   items: Array<T>,
-  key: string,
+  key: keyof T,
 ): GroupsMap<T> {
   const outObj: GroupsMap<T> = {};
 
   items.forEach((item: T) => {
-    const tempKey: string | number = item[key];
+    const tempKey: string = String(item[key]);
 
     if (!Object.prototype.hasOwnProperty.call(outObj, tempKey)) {
       outObj[tempKey] = [];
