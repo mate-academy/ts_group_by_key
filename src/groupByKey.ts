@@ -3,17 +3,16 @@ type GroupsMap<T> = {
 };
 
 export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
-  const res = items.reduce((obj: GroupsMap<T>, item: T) => {
-    const resultObject = { ...obj };
+  const res = items.reduce((acc: GroupsMap<T>, item: T) => {
     const keyForGroup = String(item[key]);
 
-    if (!Object.prototype.hasOwnProperty.call(resultObject, keyForGroup)) {
-      resultObject[keyForGroup] = [];
+    if (!Object.prototype.hasOwnProperty.call(acc, keyForGroup)) {
+      acc[keyForGroup] = [];
     }
 
-    resultObject[keyForGroup].push(item);
+    acc[keyForGroup].push(item);
 
-    return resultObject;
+    return acc;
   }, {});
 
   return res;
