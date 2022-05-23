@@ -13,8 +13,6 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
     } else {
       groupedObject[newKey].push(item);
     }
-
-    return 0;
   });
 
   return groupedObject;
