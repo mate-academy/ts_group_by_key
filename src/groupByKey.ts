@@ -2,12 +2,12 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-export function groupByKey(items: object[], key: keyof object):
-GroupsMap<object> {
-  const groupedObj: GroupsMap<object> = {};
+export function groupByKey<T>(items: T[], key: keyof T):
+GroupsMap<T> {
+  const groupedObj: GroupsMap<T> = {};
 
   items.forEach((item) => {
-    const value = item[key];
+    const value = String(item[key]);
 
     if (!groupedObj[value]) {
       groupedObj[value] = [item];
