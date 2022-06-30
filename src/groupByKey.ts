@@ -3,17 +3,15 @@ type GroupsMap<T> = {
 };
 
 export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
-  const startValue: GroupsMap<T> = {};
+  const resultObj: GroupsMap<T> = {};
 
-  return items.reduce((result, item) => {
-    const mappingObj = { ...result };
-
-    if (!mappingObj[`${item[key]}`]) {
-      mappingObj[`${item[key]}`] = [];
+  items.forEach((item) => {
+    if (!resultObj[`${item[key]}`]) {
+      resultObj[`${item[key]}`] = [];
     }
 
-    mappingObj[`${item[key]}`].push(item);
+    resultObj[`${item[key]}`].push(item);
+  });
 
-    return { ...mappingObj };
-  }, startValue);
+  return resultObj;
 }
