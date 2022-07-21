@@ -6,10 +6,10 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   const result: GroupsMap<T> = {};
 
   items.forEach((item: T) => {
-    if (result[item[key] as unknown as string]) {
-      result[item[key] as unknown as string].push(item);
+    if (result[String(item[key])]) {
+      result[String(item[key])].push(item);
     } else {
-      result[item[key] as unknown as string] = [item];
+      result[String(item[key])] = [item];
     }
   });
 
