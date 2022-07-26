@@ -1,8 +1,7 @@
 # Group by key
 
-Implement a function `groupByKey` that takes an array of similar objects 
-(`books`, `students`, etc.) and a string `key` that is one of possible item 
-keys (`key: keyof T`). The function returns an object where all the items are
+Implement a function `groupByKey` that takes an array of similar objects
+(`books`, `students`, etc.) and a string `key` that is one of possible item keys (`key: keyof T`). The function returns an object where all the items are
 grouped by values stored under a given `key` (see the examples).
 ```js
 const books = [
