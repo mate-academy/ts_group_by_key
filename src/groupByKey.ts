@@ -1,5 +1,5 @@
 type GroupsMap = {
-  [key: string | number]: object[];
+  [key: string]: object[];
 };
 
 export function groupByKey(
