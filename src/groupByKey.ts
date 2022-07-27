@@ -6,11 +6,11 @@ export function groupByKey(
   items: GroupsMap [],
   key: keyof object,
 ): object[] | {} {
-  if (items.length === 0) {
-    return {};
-  }
-
   const answer: GroupsMap = {};
+
+  if (items.length === 0) {
+    return answer;
+  }
 
   items.forEach((elem: GroupsMap) => {
     const keyValue: string = String(elem[key]);
