@@ -1,19 +1,19 @@
-type GroupsMap = {
-  [key: string]: object[];
+type GroupsMap<T> = {
+  [key: string]: Array<T>;
 };
 
-export function groupByKey(
-  items: GroupsMap [],
-  key: keyof object,
-): object[] | {} {
-  const answer: GroupsMap = {};
+export function groupByKey<T>(
+  items: Array<T>,
+  key: keyof T,
+): GroupsMap<T> | T {
+  const answer: GroupsMap<T> | T = {};
 
   if (items.length === 0) {
     return answer;
   }
 
-  items.forEach((elem: GroupsMap) => {
-    const keyValue: string = String(elem[key]);
+  items.forEach((elem) => {
+    const keyValue = String(elem[key]);
 
     if (!answer[keyValue]) {
       answer[keyValue] = [];
