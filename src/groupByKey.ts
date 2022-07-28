@@ -1,5 +1,3 @@
-// import { booleanLiteral } from "@babel/types";
-
 type GroupsMap<T> = {
   [key: string]: T[];
 };
