@@ -3,15 +3,15 @@ type GroupsMap<T> = {
 };
 
 // eslint-disable-next-line max-len
-export function groupByKey(items: object[], key: keyof object): GroupsMap<object> {
-  const result: GroupsMap<object> = {};
+export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
+  const result: GroupsMap<T> = {};
 
   // eslint-disable-next-line no-restricted-syntax
   for (const obj of items) {
-    if (obj[key] in result) {
-      result[obj[key]].push(obj);
+    if (`${obj[key]}` in result) {
+      result[`${obj[key]}`].push(obj);
     } else {
-      result[obj[key]] = [obj];
+      result[`${obj[key]}`] = [obj];
     }
   }
 
