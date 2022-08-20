@@ -5,6 +5,12 @@ Implement a function `groupByKey` that takes an array of similar objects
 keys (`key: keyof T`). The function returns an object where all the items are
 grouped by values stored under a given `key` (see the examples).
 ```js
+
+Реализуйте функцию `groupByKey`, которая принимает массив похожих объектов.
+(`книги`, `студенты` и т. д.) и строку `ключ`, которая является одним из возможных элементов
+ключи (`key: keyof T`). Функция возвращает объект, в котором все элементы
+сгруппированы по значениям, хранящимся под данным «ключом» (см. примеры).
+```js
 const books = [
   { id: 1, color: 'red', country: 'Ukraine' },
   { id: 1, color: 'red', country: 'Italy' },
