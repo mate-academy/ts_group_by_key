@@ -2,7 +2,6 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-// eslint-disable-next-line max-len
 export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   const result: GroupsMap<T> = {};
 
