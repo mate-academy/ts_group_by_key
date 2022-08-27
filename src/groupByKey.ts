@@ -1,27 +1,20 @@
-// import { forEachChild } from "typescript";
-
 type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-type Item = {
-  [key: string]: string | number | boolean | number[];
-};
+type Item = object;
 
-type T = Item;
+export function groupByKey(items: Item[], key: keyof Item): GroupsMap<Item> {
+  const group: GroupsMap<Item> = {};
 
-export function groupByKey(items: T[], key: string): GroupsMap<T> {
-  const group: GroupsMap<T> = {};
+  items.forEach((item) => {
+    const groupKey = item[key];
 
-  items.forEach((item: T) => {
-    const groupKey = `${item[key]}`;
-
-    if (Object.prototype.hasOwnProperty.call(group, groupKey)) {
-      group[groupKey].push(item);
-    } else {
+    if (!Object.prototype.hasOwnProperty.call(group, groupKey)) {
       group[groupKey] = [];
-      group[groupKey].push(item);
     }
+
+    group[groupKey].push(item);
   });
 
   return group;
