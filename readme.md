@@ -34,4 +34,5 @@ groupByKey(books, 'country') === {
     { id: 1, color: 'red', country: 'Italy' },
   ],
 }
+]
 ```
