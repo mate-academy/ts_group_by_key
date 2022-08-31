@@ -6,13 +6,13 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   const grouppedItems: GroupsMap<T> = {};
 
   items.forEach((element) => {
-    const prop = String(element[key]);
+    const itemKey = `${element[key]}`;
 
-    if (!grouppedItems[prop]) {
-      grouppedItems[prop] = [];
+    if (!grouppedItems[itemKey]) {
+      grouppedItems[itemKey] = [];
     }
 
-    grouppedItems[prop].push(element);
+    grouppedItems[itemKey].push(element);
   });
 
   return grouppedItems;
