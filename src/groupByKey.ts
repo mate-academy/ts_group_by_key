@@ -13,8 +13,6 @@ export function groupByKey<T>(items: T[], key: keyof T):GroupsMap<T> {
     }
 
     group[property].push(item);
-
-    return group;
   });
 
   return group;
