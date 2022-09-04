@@ -2,18 +2,19 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-export function groupByKey<F>(items: F[], key: string): GroupsMap<F> {
-  const sort = items.reduce((prev, elem: F): GroupsMap<F> => {
-    const obj = { ...prev };
+export function groupByKey<F>(items: F[], key: keyof F): GroupsMap<F> {
+  const groupsMap = items
+    .reduce((resultObj: GroupsMap<F>, elem: F): GroupsMap<F> => {
+      const obj = { ...resultObj };
 
-    if (!prev[elem[key]]) {
-      obj[elem[key]] = [];
-    }
+      if (!resultObj[elem[key]]) {
+        obj[elem[key]] = [];
+      }
 
-    obj[elem[key]].push(elem);
+      obj[elem[key]].push(elem);
 
-    return obj;
-  }, {});
+      return obj;
+    }, {});
 
-  return sort;
+  return groupsMap;
 }
