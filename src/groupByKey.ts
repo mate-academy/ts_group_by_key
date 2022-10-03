@@ -3,11 +3,9 @@ type GroupsMap<T> = {
 };
 
 export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
-  const result = items.reduce((accumulator, item) => ({
+  return items.reduce<GroupsMap<T>>((accumulator, item) => ({
     ...accumulator,
     [(item[key]) as string]: items
       .filter((element) => element[key] === item[key]),
   }), {});
-
-  return result;
 }
