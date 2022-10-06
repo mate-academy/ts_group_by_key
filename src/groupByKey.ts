@@ -6,39 +6,34 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   const workItems: T[] = JSON.parse(JSON.stringify(items));
   const groupOfObjects: GroupsMap<T> = {};
 
-  workItems.forEach((item: any) => {
-    if (!Object.prototype.hasOwnProperty.call(groupOfObjects, item[key])) {
-      groupOfObjects[item[key]] = [];
+  workItems.forEach((item) => {
+    const currentKey = item[key] as keyof GroupsMap<T>;
+
+    if (!Object.prototype.hasOwnProperty.call(groupOfObjects, currentKey)) {
+      groupOfObjects[currentKey] = [];
     }
 
-    groupOfObjects[item[key]].push(item);
+    groupOfObjects[currentKey].push(item);
   });
 
   return groupOfObjects;
 }
 
-// USING SET
-// interface Set<T> {
-//   add(value: T): this;
-//   clear(): void;
-//   delete(value: T): boolean;
-// eslint-disable-next-line max-len
-//   forEach(callbackfn: (value: T, value2: T, set: Set<T>) => void, thisArg?: any): void;
-//   has(value: T): boolean;
-//   readonly size: number;
-// }
+// type ForSet = string | number;
 
 // export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
 //   const workItems: T[] = JSON.parse(JSON.stringify(items));
-//   const uniqueValues: Set<T> = new Set();
+//   const uniqueValues = new Set<ForSet>();
 //   const groupOfObjects: GroupsMap<T> = {};
 
-//   workItems.forEach((item: any) => {
-//     uniqueValues.add(item[key]);
+//   workItems.forEach((item) => {
+//     const currentKey = item[key] as keyof GroupsMap<T>;
+
+//     uniqueValues.add(currentKey);
 //   });
 
-//   uniqueValues.forEach((value: any) => {
-//     const byType: T[] = workItems
+//   uniqueValues.forEach((value: ForSet) => {
+//     const byType = workItems
 //       .filter((item: T) => item[key] === value);
 
 //     groupOfObjects[value] = byType;
