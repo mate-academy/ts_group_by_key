@@ -2,17 +2,19 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-type Prop = 'string' | 'number';
+type Prop = 'string';
 
-export function groupByKey<T>(items: T[], key: string): GroupsMap<T> {
+export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   const result: GroupsMap<T> = {};
 
   for (let i = 0; i < items.length; i += 1) {
     const obj: T = items[i];
-    const keyObj = obj[key] as Prop;
+    const keyNameOfResult = obj[key] as Prop;
 
-    if (!result[keyObj]) {
-      result[keyObj] = items.filter((item) => item[key] === keyObj);
+    if (!result[keyNameOfResult]) {
+      result[keyNameOfResult] = items.filter(
+        (item) => item[key] === keyNameOfResult,
+      );
     }
   }
 
