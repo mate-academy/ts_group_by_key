@@ -24,5 +24,6 @@ module.exports = {
     '@typescript-eslint/no-shadow': ['error'],
     '@typescript-eslint/indent': ['error', 2],
     '@typescript-eslint/explicit-function-return-type': 'error',
+    'linebreak-style' : 0,
   },
 };
