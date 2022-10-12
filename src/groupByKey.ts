@@ -13,7 +13,7 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
     } else {
       result[nKey].push(current);
     }
-  }, {});
+  });
 
   return result;
 }
