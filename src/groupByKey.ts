@@ -8,13 +8,13 @@ export function groupByKey<T>(
 ): GroupsMap<T> {
   const groupedList: GroupsMap<T> = {};
 
-  // to get unique groups array from given items
-  items
-    .map((item) => item[key])
-    .filter((item, index, arr) => arr.indexOf(item) === index)
-    .forEach((group) => {
-      groupedList[String(group)] = items.filter((item) => item[key] === group);
-    });
+  items.forEach((item) => {
+    const group = item[key];
+
+    if (!groupedList[String(group)]) {
+      groupedList[String(group)] = items.filter((el) => el[key] === group);
+    }
+  });
 
   return groupedList;
 }
