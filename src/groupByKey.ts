@@ -2,8 +2,8 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-export function groupByKey(items: object[], key: string): GroupsMap<object> {
-  const objectResult = {} as GroupsMap<object>;
+export function groupByKey<T>(items: T[], key: string): GroupsMap<T> {
+  const objectResult = {};
 
   const keysArray: string[] = items.map((obj) => obj[key]);
   const keysArrayUnique: string[]
