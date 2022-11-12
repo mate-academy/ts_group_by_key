@@ -1,17 +1,19 @@
-type GroupsMap<T> = {
+type GroupsMap <T> = {
   [key: string]: T[];
 };
 
-export function groupByKey(items:[], key: string): GroupsMap<object> {
-  const result: GroupsMap<object> = {};
+export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
+  const gropedByKey: GroupsMap<T> = {};
 
-  items.forEach((item: {[key: string]: any}): void => {
-    if (!Object.prototype.hasOwnProperty.call(result, item[key])) {
-      result[item[key]] = [item];
+  items.forEach((item) => {
+    const currrentKey = String(item[key]);
+
+    if (!gropedByKey[currrentKey]) {
+      gropedByKey[currrentKey] = [item];
     } else {
-      result[item[key]].push(item);
+      gropedByKey[currrentKey].push(item);
     }
   });
 
-  return result;
+  return gropedByKey;
 }
