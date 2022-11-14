@@ -2,13 +2,17 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-export function groupByKey<T>(items: T[], key: string): GroupsMap<object> {
-  return items.reduce((hash, obj) => {
-    if (obj[key] === undefined) {
-      return hash;
-    }
+export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
+  const grougedItems: GroupsMap<T> = {};
 
-    return Object.assign(hash, { [obj[key]]: (hash[obj[key]]
-      || []).concat(obj) });
-  }, {});
+  items.forEach((item) => {
+    const itemKey = String(item[key]);
+
+    if (!grougedItems[itemKey]) {
+      grougedItems[itemKey] = [];
+    }
+    grougedItems[itemKey].push(item);
+  });
+
+  return grougedItems;
 }
