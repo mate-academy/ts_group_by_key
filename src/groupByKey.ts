@@ -3,11 +3,13 @@ type GroupsMap<T> = {
 };
 
 export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
-  const groupedObj = items.reduce((acc, curr) => {
-    if (!acc[curr[key]]) {
-      acc[curr[key]] = [curr];
+  const groupedObj = items.reduce((acc: GroupsMap<T>, curr) => {
+    const currentKey: string = curr[key];
+
+    if (!acc[currentKey]) {
+      acc[currentKey] = [curr];
     } else {
-      acc[curr[key]].push(curr);
+      acc[currentKey].push(curr);
     }
 
     return acc;
