@@ -8,11 +8,10 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   items.forEach((item) => {
     const itemKey = `${item[key]}`;
 
-    if (groupedObj[itemKey]) {
-      groupedObj[itemKey].push(item);
-    } else {
-      groupedObj[itemKey] = [item];
+    if (!groupedObj[itemKey]) {
+      groupedObj[itemKey] = [];
     }
+    groupedObj[itemKey].push(item);
   });
 
   return groupedObj;
