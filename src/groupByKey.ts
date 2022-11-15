@@ -9,6 +9,4 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
       [String(item[key])]: items.filter((el: T) => el[key] === item[key]),
     };
   }, {} as GroupsMap<T>);
-
-  // return grouped;
 }
