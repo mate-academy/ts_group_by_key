@@ -5,13 +5,15 @@ type GroupsMap<T> = {
 export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   const result: GroupsMap<T> = {};
 
-  for (let i: number = 0; i < items.length; i += 1) {
-    if (!result[`${items[i][key]}`]) {
-      result[`${items[i][key]}`] = [];
+  items.forEach((elem) => {
+    const elemKey = elem[key];
+
+    if (!result[`${elemKey}`]) {
+      result[`${elemKey}`] = [];
     }
 
-    result[`${items[i][key]}`].push(items[i]);
-  }
+    result[`${elemKey}`].push(elem);
+  });
 
   return result;
 }
