@@ -4,7 +4,7 @@ type GroupsMap<T> = {
 };
 
 export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
-  return items.reduce((result: GroupsMap<T>, item) => {
+  return items.reduce<GroupsMap<T>>((result, item) => {
     const property = String(item[key]);
 
     if (!Object.prototype.hasOwnProperty.call(result, property)) {
