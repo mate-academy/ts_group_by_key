@@ -9,6 +9,7 @@ const books = [
   { id: 1, color: 'red', country: 'Ukraine' },
   { id: 1, color: 'red', country: 'Italy' },
   { id: 1, color: 'green', country: 'Ukraine' },
+]
 ;
 ```
 ```js
