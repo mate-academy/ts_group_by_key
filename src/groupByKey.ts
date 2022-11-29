@@ -8,7 +8,7 @@ export function groupByKey(
   const result: GroupsMap<object> = {};
 
   items.forEach((item: object) => {
-    const keyValue: any = item[key];
+    const keyValue = item[key] as string;
 
     if (result[keyValue]) {
       result[keyValue].push(item);
