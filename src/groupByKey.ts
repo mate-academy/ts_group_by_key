@@ -5,15 +5,15 @@ type GroupsMap<T> = {
 export function groupByKey<T>(items: T[], key: keyof T) : GroupsMap<T> {
   const groupedItems: GroupsMap<T> = {};
 
-  items.forEach((item) => {
-    const keyValue: string = `${item[key]}`;
+  items.reduce((acc, curr) => {
+    const keyValue = String(curr[key]);
 
-    if (!groupedItems[keyValue]) {
-      groupedItems[keyValue] = [];
-    }
+    acc[keyValue] = acc[keyValue] || [];
 
-    groupedItems[keyValue].push(item);
-  });
+    acc[keyValue].push(curr);
+
+    return acc;
+  }, groupedItems);
 
   return groupedItems;
 }
