@@ -8,7 +8,8 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   items.reduce((accumulator, item) => {
     const keyValue = String(item[key]);
 
-    accumulator[keyValue] = items.filter((el) => el[key] === item[key]);
+    accumulator[keyValue] = accumulator[keyValue] || [];
+    accumulator[keyValue].push(item);
 
     return accumulator;
   }, groupedItems);
