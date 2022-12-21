@@ -1,24 +1,17 @@
-export interface GroupsMap<T> {
+interface Item {
+  [key: string]: string | number | boolean | number[];
+}
+
+interface GroupsMap<T> {
   [key: string]: T[];
 }
 
-export type KeyTypes = string | number;
-
-export interface Item {
-  [key: string]: KeyTypes;
-}
-
 export function groupByKey(items: Item[], key: keyof Item): GroupsMap<Item> {
-  const newKeys: KeyTypes[] = [];
+  return items.reduce((acc: GroupsMap<Item>, item: Item) => {
+    const newKey = `${item[key]}`;
 
-  items.forEach((item: Item) => {
-    if (!newKeys.includes(item[key])) {
-      newKeys.push(item[key]);
-    }
-  });
+    acc[newKey] = (acc[newKey] || []).concat(item);
 
-  return newKeys.reduce((prev: GroupsMap<Item>, newKey: KeyTypes) => ({
-    ...prev,
-    [newKey]: items.filter((item: Item) => item[key] === newKey),
-  }), {});
+    return acc;
+  }, {});
 }
