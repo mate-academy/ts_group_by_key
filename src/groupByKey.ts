@@ -1,7 +1,17 @@
-type GroupsMap<T> = {
-  [key: string]: T[];
-};
+interface Item {
+  [key: string]: string | number | boolean | number[];
+}
 
-export function groupByKey(items, key) {
-  // write code here;
+interface GroupsMap<T> {
+  [key: string]: T[];
+}
+
+export function groupByKey(items: Item[], key: keyof Item): GroupsMap<Item> {
+  return items.reduce((acc: GroupsMap<Item>, item: Item) => {
+    const newKey = `${item[key]}`;
+
+    acc[newKey] = (acc[newKey] || []).concat(item);
+
+    return acc;
+  }, {});
 }
