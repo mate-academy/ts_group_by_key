@@ -7,14 +7,10 @@ export function groupByKey<R>(
   key: keyof R,
 ): GroupsMap<R> {
   return items.reduce((acc: GroupsMap<R>, item: R) => {
-    const groupKey:string = `${item[key]}`;
+    const groupKey = `${item[key]}`;
     const groups = { ...acc };
 
-    if (groups[groupKey]) {
-      groups[groupKey].push(item);
-    } else {
-      groups[groupKey] = [item];
-    }
+    groups[groupKey] = (groups[groupKey] || []).concat(item);
 
     return groups;
   }, {});
