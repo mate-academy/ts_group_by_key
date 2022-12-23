@@ -4,14 +4,14 @@ type GroupsMap<T> = {
 
 export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   return items.reduce((prev, current) => {
-    const groupKey = current[key];
+    const groupKey = String(current[key]);
     const result = { ...prev };
 
-    if (!result[groupKey as string]) {
-      result[groupKey as string] = [];
+    if (!result[groupKey]) {
+      result[groupKey] = [];
     }
 
-    result[groupKey as string].push(current);
+    result[groupKey].push(current);
 
     return result;
   }, {} as GroupsMap<T>);
