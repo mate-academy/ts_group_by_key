@@ -2,12 +2,12 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-type Obj = {
+type Group = {
   [key: string]: any;
 };
 
-export function groupByKey(items: Obj[], key: string): GroupsMap<Obj> {
-  const result: GroupsMap<Obj> = {};
+export function groupByKey(items: Group[], key: string): GroupsMap<Group> {
+  const result: GroupsMap<Group> = {};
   const newItems = [...items].sort((current, prev) => current[key] - prev[key]);
 
   newItems.map((el): void => {
