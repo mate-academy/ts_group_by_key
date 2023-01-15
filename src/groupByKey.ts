@@ -8,9 +8,7 @@ type Obj = {
 
 export function groupByKey(items: Obj[], key: string): GroupsMap<Obj> {
   const result: GroupsMap<Obj> = {};
-  const newItems: Obj[] = [...items];
-
-  newItems.sort((current, prev) => current[key] - prev[key]);
+  const newItems = [...items].sort((current, prev) => current[key] - prev[key]);
 
   newItems.map((el): void => {
     if (!(el[key] in result)) {
