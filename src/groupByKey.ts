@@ -9,11 +9,13 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
     const newKey = String(item[key]);
 
     if (!Object.prototype.hasOwnProperty
-      .call(groupedItems, String(newKey))) {
+      .call(groupedItems, newKey)) {
       groupedItems[newKey] = [item];
-    } else {
-      groupedItems[newKey].push(item);
+
+      return;
     }
+
+    groupedItems[newKey].push(item);
   });
 
   return groupedItems;
