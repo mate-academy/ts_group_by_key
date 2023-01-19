@@ -5,7 +5,7 @@ type GroupsMap<T> = {
 export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   const grouped : GroupsMap<T> = {};
 
-  items.forEach((person:T): void => {
+  items.forEach((person) => {
     const groupingValue = String(person[key]);
 
     if (groupingValue in grouped) {
