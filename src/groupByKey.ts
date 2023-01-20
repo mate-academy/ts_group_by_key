@@ -1,10 +1,10 @@
-interface GroupsMap<T> {
+type GroupsMap<T> = {
   [key: string]: T[];
-}
+};
 
-interface Item {
+type Item = {
   [key: string]: string | number | boolean | number[];
-}
+};
 
 export function groupByKey(items: Item[], key: keyof Item): GroupsMap<Item> {
   return items.reduce((acc: GroupsMap<Item>, item: Item) => {
