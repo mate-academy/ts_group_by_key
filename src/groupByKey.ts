@@ -6,7 +6,7 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   return items.reduce((acc: GroupsMap<T>, el) => {
     const mainKey = String(el[key]);
 
-    if (acc[mainKey] === undefined) {
+    if (!acc[mainKey]) {
       acc[mainKey] = [];
     }
 
