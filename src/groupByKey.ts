@@ -3,9 +3,9 @@ type GroupsMap<T> = {
 };
 
 export function groupByKey
-<T, K extends keyof T>(items: T[], key: K): GroupsMap<T> {
+<T>(items: T[], key: keyof T): GroupsMap<T> {
   // i know it is not good, but what type it will be?
-  const result: any = {};
+  const result: { [key: string]: T[keyof T] } = {};
 
   for (let i: number = 0; i < items.length; i += 1) {
     if (typeof result[items[i][key]] === 'undefined') {
