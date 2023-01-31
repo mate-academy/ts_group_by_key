@@ -1,11 +1,15 @@
+type GroupsMap<T> = {
+  [keyName: string]: T[];
+};
+
 export function groupByKey<T>(items: T[], key: keyof T): object {
   // write code here;
-  const result: any = {};
+  const result: GroupsMap<T> = {};
 
   items.forEach((itemsElement: T) => {
     const variable: string = String(itemsElement[key]);
 
-    if (Object.prototype.hasOwnProperty.call(result, variable)) {
+    if (result.hasOwnProperty(variable)) {
       result[variable].push(itemsElement);
     } else {
       const temporaryObject = { [variable]: [itemsElement] };
