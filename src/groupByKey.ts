@@ -8,8 +8,10 @@ export function groupByKey<T>(items: T[], key: keyof T):GroupsMap<T> {
   items.forEach((item) => {
     const groupKey = String(item[key]);
 
-    if (!result[groupKey]) {
-      result[groupKey] = items.filter((elem) => groupKey === String(elem[key]));
+    if (!Object.prototype.hasOwnProperty.call(result, groupKey)) {
+      result[groupKey] = [item];
+    } else {
+      result[groupKey].push(item);
     }
   });
 
