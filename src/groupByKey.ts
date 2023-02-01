@@ -7,12 +7,12 @@ export function groupByKey<T>(items: T[], key: keyof T): object {
   const result: GroupsMap<T> = {};
 
   items.forEach((itemsElement: T) => {
-    const variable: string = String(itemsElement[key]);
+    const seriesName: string = String(itemsElement[key]);
 
-    if (result.hasOwnProperty(variable)) {
-      result[variable].push(itemsElement);
+    if (result.hasOwnProperty(seriesName)) {
+      result[seriesName].push(itemsElement);
     } else {
-      const temporaryObject = { [variable]: [itemsElement] };
+      const temporaryObject = { [seriesName]: [itemsElement] };
 
       Object.assign(result, temporaryObject);
     }
