@@ -11,10 +11,7 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
     if (!result[group]) {
       result[group] = [];
     }
-
-    if (result[group]) {
-      result[group].push(data);
-    }
+    result[group].push(data);
   });
 
   return result;
