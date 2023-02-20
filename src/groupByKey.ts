@@ -1,7 +1,9 @@
-type GroupsMap<T> = {
-  [key: string]: T[];
-};
+export function groupByKey<T extends { [key: string]: any }>(
+  arr: T[], key: keyof T,
+): { [key: string]: T} {
+  return arr.reduce((acc, obj) => {
+    acc[obj[key]] = (acc[obj[key]] || []).concat(obj);
 
-export function groupByKey(items, key) {
-  // write code here;
+    return acc;
+  }, {});
 }
