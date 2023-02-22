@@ -8,7 +8,7 @@ export function groupByKey(
 ): GroupsMap<object> {
   const result: GroupsMap<object> = {};
 
-  items.filter((item: object) => {
+  items.forEach((item: object) => {
     if (!result[item[key]]) {
       result[item[key]] = [];
     }
