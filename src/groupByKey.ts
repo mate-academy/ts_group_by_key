@@ -3,23 +3,20 @@ type GroupsMap<T> = {
 };
 
 export function groupByKey(
-  items: object[],
+  items: any,
   key: string,
 ): GroupsMap<typeof items> {
-  const obj: GroupsMap<typeof items> = {};
-  const keyArray = items.reduce((acc: string[], curr: object) => {
+  return items.reduce((acc: object, curr: object) => {
     const valueKey: string = curr[key];
 
-    if (!acc.includes(valueKey)) {
-      acc.push(valueKey);
+    if (!acc[valueKey]) {
+      acc[valueKey] = [curr];
+
+      return acc;
     }
 
+    acc[valueKey].push(curr);
+
     return acc;
-  }, []);
-
-  keyArray.forEach((e: string) => {
-    obj[e] = items.filter((curr: object) => curr[key] === e);
-  });
-
-  return obj;
+  }, {});
 }
