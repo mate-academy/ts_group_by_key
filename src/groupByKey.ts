@@ -5,12 +5,14 @@ type GroupsMap<T> = {
 export function groupByKey(items: any[], key: string): any {
   const groupedObj: GroupsMap<any> = {};
 
-  items.map((item) => {
-    if (groupedObj[item[key]] === undefined) {
-      groupedObj[item[key]] = [];
-      groupedObj[item[key]].push(item);
+  items.forEach((item) => {
+    const itemKey = item[key];
+
+    if (itemKey in groupedObj) {
+      groupedObj[itemKey].push(item);
     } else {
-      groupedObj[item[key]].push(item);
+      groupedObj[itemKey] = [];
+      groupedObj[itemKey].push(item);
     }
 
     return true;
