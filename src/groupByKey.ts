@@ -7,14 +7,13 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
     groupOfObejcts: GroupsMap<T>,
     singleObject,
   ) => {
+    const groupOfObejctsCopy = { ...groupOfObejcts };
     const groupKey = String(singleObject[key]);
 
-    if (!Object.prototype.hasOwnProperty.call(groupOfObejcts, groupKey)) {
-      Object.assign(groupOfObejcts, { [groupKey]: [] });
-    }
+    groupOfObejctsCopy[groupKey] ??= [];
 
-    groupOfObejcts[groupKey].push(singleObject);
+    groupOfObejctsCopy[groupKey].push(singleObject);
 
-    return groupOfObejcts;
+    return groupOfObejctsCopy;
   }, {});
 }
