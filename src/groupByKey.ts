@@ -8,7 +8,7 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   items.forEach((item) => {
     const groupBy = String(item[key]);
 
-    if (groupBy in groupedItems) {
+    if ({}.hasOwnProperty.call(groupedItems, groupBy)) {
       return;
     }
 
