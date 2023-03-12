@@ -3,17 +3,15 @@ type GroupsMap<T> = {
 };
 
 export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
-  const groupedItems: GroupsMap<T> = {};
-  const keysSet: Set<string> = new Set(items.map((item) => String(item[key])));
-  const keys: Array<string> = Array.from(keysSet);
+  return items.reduce((acc: GroupsMap<T>, item: T) => {
+    const value = String(item[key]);
 
-  keys.reduce((groupedItem, uniqKey): GroupsMap<T> => {
-    groupedItems[uniqKey] = items.filter((item) => {
-      return String(item[key]) === uniqKey;
-    });
+    if (!acc[value]) {
+      acc[value] = [];
+    }
 
-    return groupedItem;
-  }, groupedItems);
+    acc[value].push(item);
 
-  return groupedItems;
+    return acc;
+  }, {});
 }
