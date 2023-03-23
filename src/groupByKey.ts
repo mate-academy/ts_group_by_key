@@ -2,14 +2,19 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
+type Item = {
+  [key: string]: any;
+};
+
 export function groupByKey(items: object[], key: string): GroupsMap<object> {
   const result: GroupsMap<object> = {};
 
-  const arrayofValues = items
-    .reduce((sum: string[], el: any) => [...sum, el[key]], []);
+  items.forEach((item: Item) => {
+    if (!(item[key] in result)) {
+      result[item[key]] = [];
+    }
 
-  arrayofValues.forEach((value: string) => {
-    result[value] = items.filter((el: any) => el[key] === value);
+    result[item[key]].push(item);
   });
 
   return result;
