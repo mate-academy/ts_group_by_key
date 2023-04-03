@@ -1,5 +1,3 @@
-// import { type } from "os";
-
 type GroupsMap<T> = {
   [key: string]: T[];
 };
@@ -9,22 +7,16 @@ type Item = {
 };
 
 export function groupByKey(items: Item[], key: string): GroupsMap<Item> {
-  const sortedObject: GroupsMap<Item> = items.reduce((
-    obj: GroupsMap<Item>,
-    item:Item,
-  ) => {
-    return {
-      ...obj,
-      [item[key]]: [],
-    };
-  }, {});
+  const sortedObject: GroupsMap<Item> = {};
 
   items.forEach((item: Item) => {
     const property: string | number = item[key];
 
-    if (property in sortedObject) {
-      sortedObject[property].push(item);
+    if (!(property in sortedObject)) {
+      sortedObject[property] = [];
     }
+
+    sortedObject[property].push(item);
   });
 
   return sortedObject;
