@@ -12,7 +12,7 @@ export function groupByKey(items: Item[], key: string): GroupsMap<Item> {
   items.forEach((item: Item) => {
     const property: string | number = item[key];
 
-    if (!(property in sortedObject)) {
+    if (!sortedObject[property]) {
       sortedObject[property] = [];
     }
 
