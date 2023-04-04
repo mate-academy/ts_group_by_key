@@ -6,12 +6,14 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   const objectsInGroup: GroupsMap<T> = {};
 
   items.forEach((item) => {
-    const keyObject = String(item[key]);
+    const newKey = String(item[key]);
+    const objProtoOfNewKey
+    = Object.prototype.hasOwnProperty.call(objectsInGroup, newKey);
 
-    if (keyObject in objectsInGroup) {
-      objectsInGroup[keyObject].push(item);
+    if (objProtoOfNewKey) {
+      objectsInGroup[newKey].push(item);
     } else {
-      objectsInGroup[keyObject] = [item];
+      objectsInGroup[newKey] = [item];
     }
   });
 
