@@ -6,8 +6,8 @@ export function groupByKey<T extends object>(
   items: T[],
   key: keyof T,
 ): GroupsMap<T> {
-  return items.reduce((acc, item) => {
-    const keyValue = item[key] as keyof GroupsMap<T>;
+  return items.reduce((acc: GroupsMap<T>, item) => {
+    const keyValue = String(item[key]);
 
     if (!acc[keyValue]) {
       acc[keyValue] = [];
@@ -16,5 +16,5 @@ export function groupByKey<T extends object>(
     acc[keyValue].push(item);
 
     return acc;
-  }, {} as GroupsMap<T>);
+  }, {});
 }
