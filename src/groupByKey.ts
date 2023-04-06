@@ -10,10 +10,8 @@ export function groupByKey<T>(
 
     if (!Object.prototype.hasOwnProperty.call(acc, groupKey)) {
       acc[groupKey] = [];
-      acc[groupKey].push(element);
-    } else {
-      acc[groupKey].push(element);
     }
+    acc[groupKey].push(element);
 
     return acc;
   }, {});
