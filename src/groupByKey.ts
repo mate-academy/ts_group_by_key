@@ -5,11 +5,11 @@ type GroupsMap<T> = {
 export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   return items.reduce((groups, item) => {
     const value = item[key];
-    const group = groups[value as string] || [];
+    const group = groups[String(value)] || [];
 
     return {
       ...groups,
-      [value as string]: [...group, item],
+      [String(value)]: [...group, item],
     };
   }, {} as GroupsMap<T>);
 }
