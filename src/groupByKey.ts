@@ -10,7 +10,7 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
 
     return {
       ...groups,
-      [String(value)]: [...group, item],
+      [stringValue]: [...group, item],
     };
   }, {});
 }
