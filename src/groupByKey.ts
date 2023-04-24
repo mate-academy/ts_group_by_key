@@ -9,7 +9,7 @@ GroupsMap<T> {
   items.forEach((item) => {
     const itemKey = item[key] as string;
 
-    if (!Object.prototype.hasOwnProperty.call(groupedItems, itemKey)) {
+    if (!groupedItems[itemKey]) {
       groupedItems[itemKey] = [];
     }
 
