@@ -6,14 +6,14 @@ export function groupByKey(
   items:GroupsMap<string | number>,
   key:string,
 ):GroupsMap<string | number> {
-  const resalt:GroupsMap<string | number> = {};
+  const result:GroupsMap<string | number> = {};
 
   items.forEach((item) => {
-    if (!resalt[item[key]]) {
-      resalt[item[key]] = [];
+    if (!result[item[key]]) {
+      result[item[key]] = [];
     }
-    resalt[item[key]].push(item);
+    result[item[key]].push(item);
   });
 
-  return resalt;
+  return result;
 }
