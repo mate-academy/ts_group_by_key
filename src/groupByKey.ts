@@ -8,8 +8,8 @@ export function groupByKey<T>(
 ):GroupsMap<T> {
   const result: GroupsMap<T> = {};
 
-  items.forEach((item: T): void => {
-    const currentKeyValue:string = String(item[key]);
+  items.forEach((item) => {
+    const currentKeyValue = String(item[key]);
 
     if (currentKeyValue in result) {
       result[currentKeyValue].push(item);
