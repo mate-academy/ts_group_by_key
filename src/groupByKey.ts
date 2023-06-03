@@ -3,20 +3,16 @@ type GroupsMap<T> = {
 };
 
 export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
-  // const group = {} as GroupsMap<T>;
-
-  const group = items.reduce((books: GroupsMap<T>, book) => {
+  return items.reduce((books: GroupsMap<T>, book) => {
     const value = String(book[key]);
+    const booksGrouped = { ...books };
 
     if (!books[value]) {
-      // eslint-disable-next-line no-param-reassign
-      books[value] = [];
+      booksGrouped[value] = [];
     }
 
-    books[value].push(book);
+    booksGrouped[value].push(book);
 
-    return books;
+    return booksGrouped;
   }, {});
-
-  return group;
 }
