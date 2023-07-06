@@ -1,39 +1,21 @@
-type GroupsMap<S, B> = {
-  [key: string]: Array<S | B>;
+type GroupsMap<T> = {
+  [key: string]: T[];
 };
 
-interface Student {
-  name: string;
-  surname: string;
-  age: number;
-  married: boolean;
-  grades: number[];
-}
+export function groupByKey<T>(
+  items: T[],
+  key: keyof T,
+): GroupsMap<T> {
+  const groupItems: GroupsMap<T> = {};
 
-interface Book {
-  author: string;
-  country: string;
-  imageLink: string;
-  language: string;
-  pages: number;
-  title: string;
-  year: number;
-}
+  items.forEach((item: T): void => {
+    const groupValue = <string>item[key];
 
-export function groupByKey(
-  items: Array<Student | Book>,
-  key: string,
-): GroupsMap<Student, Book> {
-  const groupItems: GroupsMap<Student, Book> = {};
-
-  items.forEach((item: (Student | Book)): void => {
-    const groupKey:string = item[key as keyof (Student | Book)];
-
-    if (!groupItems[groupKey]) {
-      groupItems[groupKey] = [];
+    if (!groupItems[groupValue]) {
+      groupItems[groupValue] = [];
     }
 
-    groupItems[groupKey]?.push(item);
+    groupItems[groupValue].push(item);
   });
 
   return groupItems;
