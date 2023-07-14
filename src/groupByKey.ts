@@ -54,4 +54,4 @@ const books = [
   },
 ];
 
-groupByKey(books, 'country');
+groupByKey(books, 'author');
