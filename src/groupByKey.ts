@@ -2,9 +2,7 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-type ObjectForSorting = {
-  [key: string]: string | number;
-};
+type ObjectForSorting = Record<string, string | number>;
 
 export function groupByKey<T>(
   items: ObjectForSorting[],
