@@ -2,16 +2,23 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-export function groupByKey<T>(items: Object[], key: string): GroupsMap<T> {
+type ObjectForSorting = {
+  [key: string]: string | number;
+};
+
+export function groupByKey<T>(
+  items: ObjectForSorting[],
+  key: string,
+): GroupsMap<T> {
   const group: GroupsMap<T> = {};
 
-  items.forEach((object: any) => {
+  items.forEach((object: ObjectForSorting) => {
     const keyValue = object[key];
 
     if (group[keyValue]) {
-      group[keyValue].push(object);
+      group[keyValue].push(object as T);
     } else {
-      group[keyValue] = [object];
+      group[keyValue] = [object as T];
     }
   });
 
