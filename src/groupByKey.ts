@@ -10,17 +10,16 @@ export function groupByKey<T>(
   items: ObjectForSorting[],
   key: string,
 ): GroupsMap<T> {
-  const group: GroupsMap<T> = {};
-
-  items.forEach((object: ObjectForSorting) => {
+  return items.reduce((acc: GroupsMap<T>, object: ObjectForSorting) => {
     const keyValue = object[key];
+    const finalGroup = acc;
 
-    if (group[keyValue]) {
-      group[keyValue].push(object as T);
+    if (finalGroup[keyValue]) {
+      finalGroup[keyValue].push(object as T);
     } else {
-      group[keyValue] = [object as T];
+      finalGroup[keyValue] = [object as T];
     }
-  });
 
-  return group;
+    return finalGroup;
+  }, {});
 }
