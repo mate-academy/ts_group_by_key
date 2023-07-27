@@ -6,25 +6,17 @@ export function groupByKey<ObjectToSort, Key extends keyof ObjectToSort>(
   items: ObjectToSort[],
   key: Key,
 ): GroupsMap<ObjectToSort> {
-  if (items.length === 0) {
-    return {};
-  }
+  const sortedItems: GroupsMap<ObjectToSort> = {};
 
-  type ValueFromObject = ObjectToSort[Key];
+  items.forEach((item) => {
+    const keyValue = String(item[key]);
 
-  const valuesOfKey: Array<ValueFromObject> = items.map(
-    (item: ObjectToSort) => item[key],
-  );
-  const uniqueValuesOfKey: Set<ValueFromObject> = new Set([...valuesOfKey]);
-  const sortedObjects: GroupsMap<ObjectToSort> = {};
-
-  uniqueValuesOfKey.forEach((uniqueValueOfKey: ValueFromObject) => {
-    const relativesObjects = items.filter(
-      (item: ObjectToSort) => item[key] === uniqueValueOfKey,
-    );
-
-    sortedObjects[String(uniqueValueOfKey)] = relativesObjects;
+    if (!sortedItems[keyValue]) {
+      sortedItems[keyValue] = [item];
+    } else {
+      sortedItems[keyValue].push(item);
+    }
   });
 
-  return sortedObjects;
+  return sortedItems;
 }
