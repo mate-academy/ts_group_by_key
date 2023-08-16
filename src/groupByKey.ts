@@ -1,5 +1,5 @@
 type GroupsMap<T> = {
-  [key: string]: T[]; // Array<T>
+  [key: string]: T[];
 };
 
 export function groupByKey<T>(
