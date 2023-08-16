@@ -11,11 +11,11 @@ export function groupByKey<T>(
   items.forEach((element: T) => {
     const value = element[key];
 
-    if (!result[value as string]) {
-      result[value as string] = [];
+    if (!result[String(value)]) {
+      result[String(value)] = [];
     }
 
-    result[value as string].push(element);
+    result[String(value)].push(element);
   });
 
   return result;
