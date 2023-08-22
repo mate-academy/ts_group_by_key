@@ -1,22 +1,21 @@
-export function groupByKey<T>(items: T[], key: keyof T): object {
-  const groupsMap = items.reduce((map, item) => {
-    const keyValue = item[key];
-    const newGroup = map.get(keyValue);
+type GroupsMap<T> = {
+  [key: string]: T[];
+};
 
-    if (newGroup) {
-      newGroup.push(item);
-    } else {
-      map.set(keyValue, [item]);
+export function groupByKey<T, K extends keyof T>(items: T[],
+  key: K): GroupsMap<T> {
+  const groupsMap: GroupsMap<T> = items.reduce((mapa, item) => {
+    const keyValue: string = item[key] as string;
+    const result = { ...mapa };
+
+    if (!result[keyValue]) {
+      result[keyValue] = [];
     }
 
-    return map;
-  }, new Map<any, T[]>());
+    result[keyValue].push(item);
 
-  const groups: Record<string, T[]> = {};
+    return result;
+  }, {} as GroupsMap<T>);
 
-  groupsMap.forEach((group, b) => {
-    groups[b] = group;
-  });
-
-  return groups;
+  return groupsMap;
 }
