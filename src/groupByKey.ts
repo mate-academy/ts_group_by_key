@@ -11,8 +11,8 @@ export function groupByKey<T = InitialObject>(
   const acc: GroupsMap<T> = {};
 
   items.forEach((obj) => {
-    const value = obj[key as keyof T];
-    const objValue = acc[value as keyof GroupsMap<T>];
+    const value = obj[key] as string;
+    const objValue = acc[value];
 
     if (Array.isArray(objValue)) {
       objValue.push(obj);
