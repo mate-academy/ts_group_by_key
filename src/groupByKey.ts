@@ -6,13 +6,14 @@ export function groupByKey<T extends Record<string, string | number>>(
   items: T[],
   key: keyof T,
 ): GroupsMap<T> {
-  const result:GroupsMap<T> = {};
+  const result: GroupsMap<T> = {};
 
   items.forEach((element) => {
-    result[element[key]] = [];
+    if (!result[element[key]]) {
+      result[element[key]] = [];
+    }
+    result[element[key]].push(element);
   });
-
-  items.forEach((element) => result[element[key]].push(element));
 
   return result;
 }
