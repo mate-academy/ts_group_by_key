@@ -2,20 +2,16 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-interface Item {
-  [key: string]: any;
-}
+export function groupByKey<T>(items: T[], key :keyof T):
+GroupsMap<T> {
+  const groupedByKey = items.reduce((acc: GroupsMap<T>, current: T) => {
+    const currentItemGroup = String(current[key]);
 
-export function groupByKey(items: Item[], key :keyof GroupsMap<Item>):
-GroupsMap<Item> {
-  const groupedByKey = items.reduce((acc: GroupsMap<Item>, current: Item) => {
-    const newKey: string = current[key];
-
-    if (!acc[newKey]) {
-      acc[newKey] = [];
+    if (!acc[currentItemGroup]) {
+      acc[currentItemGroup] = [];
     }
 
-    acc[newKey].push(current);
+    acc[currentItemGroup].push(current);
 
     return acc;
   }, {});
