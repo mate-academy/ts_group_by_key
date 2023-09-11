@@ -2,10 +2,8 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-export function groupByKey<
-  T,
-  K extends keyof T
->(items: T[], key: K): GroupsMap<T> {
+// eslint-disable-next-line max-len
+export function groupByKey<T, K extends keyof T>(items: T[], key: K): GroupsMap<T> {
   const groups: GroupsMap<T> = {};
 
   items.forEach((item) => {
