@@ -8,18 +8,15 @@ export function groupByKey<T>(
 ): GroupsMap<T> {
   // write code here;
 
-  const obj: GroupsMap<T> = {};
+  return items.reduce((accumulator, currentValue) => {
+    const keyValue = currentValue[key] as string;
 
-  items.forEach((item) => {
-    const keyObj = item[key] as string;
-
-    if (obj[keyObj] !== undefined && obj[keyObj].length !== 0) {
-      obj[keyObj].push(item);
-    } else {
-      obj[keyObj] = [];
-      obj[keyObj].push(item);
+    if (!accumulator[keyValue]) {
+      accumulator[keyValue] = [];
     }
-  });
 
-  return obj;
+    accumulator[keyValue].push(currentValue);
+
+    return accumulator;
+  }, {} as GroupsMap<T>);
 }
