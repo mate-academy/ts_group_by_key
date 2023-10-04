@@ -3,19 +3,17 @@ type GroupsMap<T> = {
 };
 
 export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
-  const callback = (groups: GroupsMap<T>, item: T): GroupsMap<T> => {
-    const groupsCopy = { ...groups };
+  const groups: GroupsMap<T> = {};
 
+  items.forEach((item: T) => {
     const value = String(item[key]);
 
-    if (!groupsCopy[value]) {
-      groupsCopy[value] = [];
+    if (!groups[value]) {
+      groups[value] = [];
     }
 
-    groupsCopy[value].push(item);
+    groups[value].push(item);
+  });
 
-    return groupsCopy;
-  };
-
-  return items.reduce(callback, {});
+  return groups;
 }
