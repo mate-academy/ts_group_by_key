@@ -2,7 +2,7 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-export function groupByKey<T extends Record<string, any>>(
+export function groupByKey<T extends Record<string, string | number>>(
   items: T[], key: keyof T,
 ): GroupsMap<T> {
   const groupedItems: GroupsMap<T> = {};
