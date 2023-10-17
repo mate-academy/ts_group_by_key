@@ -5,7 +5,7 @@ type GroupsMap<T> = {
 export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   const result: GroupsMap<T> = {};
 
-  items.map((item) => {
+  items.forEach((item) => {
     const keyValue: string = String(item[key]);
 
     if (result[keyValue]) {
@@ -13,8 +13,6 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
     } else {
       result[keyValue] = [item];
     }
-
-    return result;
   });
 
   return result;
