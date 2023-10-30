@@ -1,18 +1,19 @@
+type GroupsMap<T> = {
   [key: string]: T[];
 };
 
 export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
-  const groopsMap: GroupsMap<T> = {};
+  const sortedData: GroupsMap<T> = {};
 
   items.forEach((item) => {
-    const groop = String(item[key]);
+    const groupKey = String(item[key]);
 
-    if (!groopsMap[groop]) {
-      groopsMap[groop] = [item];
-    } else {
-      groopsMap[groop].push(item);
+    if (!sortedData[groupKey]) {
+      sortedData[groupKey] = [];
     }
+
+    sortedData[groupKey].push(item);
   });
 
-  return groopsMap;
+  return sortedData;
 }
