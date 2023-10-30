@@ -13,5 +13,5 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
     acc[groupKey].push(item);
 
     return acc;
-  }, {} as any);
+  }, {});
 }
