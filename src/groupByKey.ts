@@ -18,17 +18,3 @@ export function groupByKey<I extends Object>(items: I[], key: string)
 
   return result;
 }
-
-// --2
-// const keys = Array.from(new Set(items.map((item) => item[key])));
-// const result = items.reduce((r: I, a) => {
-//   r[a[key]] = r[a[key]] || [];
-//   r[a[key]].push(a);
-
-//   return r;
-// }, Object.create(null));
-
-// --1
-// for (const a of keys) {
-//   result[a] = items.filter((curr) => curr[key] === a);
-// }
