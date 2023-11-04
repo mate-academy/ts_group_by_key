@@ -2,17 +2,15 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-export function groupByKey<T>(items: T[], key: string): GroupsMap<T> {
-  const result: GroupsMap<T> = {};
+export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
+  return items.reduce((prev, curr) => {
+    const itemKey = curr[key] as string;
 
-  // eslint-disable-next-line no-restricted-syntax
-  for (const item of items) {
-    if (result[item[key]]) {
-      result[item[key]].push(item);
-    } else {
-      result[item[key]] = [item];
-    }
-  }
-
-  return result;
+    return {
+      ...prev,
+      [itemKey]: prev[itemKey]
+        ? [...prev[itemKey], curr]
+        : [curr],
+    };
+  }, {} as GroupsMap<T>);
 }
