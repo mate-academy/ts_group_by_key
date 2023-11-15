@@ -4,6 +4,7 @@ import books from './books.json';
 
 const { groupByKey } = require('./groupByKey');
 
+
 describe('Function "groupByKey"', () => {
   test('should be declared', () => {
     expect(groupByKey)
