@@ -4,7 +4,7 @@ type GroupsMap<T> = {
 
 export function groupByKey<T extends Object>(items: T[], key: keyof T)
   : GroupsMap<T> {
-  const values = Array.from(new Set(items.map((item) => String(item[key]))));
+  const values = items.map((item) => String(item[key]));
 
   return values.reduce((prev, value) => {
     const validItems = items
