@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1701034509893" clover="3.2.0">
+  <project timestamp="1701034509893" name="All files">
+    <metrics statements="10" coveredstatements="10" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2" elements="14" coveredelements="14" complexity="0" loc="10" ncloc="10" packages="1" files="1" classes="1"/>
+    <file name="groupByKey.js" path="/Users/jacekkosiba/projects/ts_group_by_key/src/groupByKey.js">
+      <metrics statements="10" coveredstatements="10" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="5" count="6" type="stmt"/>
+      <line num="6" count="6" type="stmt"/>
+      <line num="7" count="44" type="stmt"/>
+      <line num="8" count="44" type="cond" truecount="2" falsecount="0"/>
+      <line num="9" count="35" type="stmt"/>
+      <line num="12" count="9" type="stmt"/>
+      <line num="15" count="6" type="stmt"/>
+      <line num="17" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
