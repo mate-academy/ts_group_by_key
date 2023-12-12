@@ -7,32 +7,18 @@ export function groupByKey<T>(
   key: keyof T,
 ): GroupsMap<T> {
   return items.reduce((
-    acc: GroupsMap<T>,
+    prev: GroupsMap<T>,
     current: T,
   ) => {
     const valueStr = String(current[key]);
+    const total = { ...prev };
 
-    if (!acc[valueStr]) {
-      acc[valueStr] = [];
+    if (!total[valueStr]) {
+      total[valueStr] = [];
     }
 
-    acc[valueStr].push(current);
+    total[valueStr].push(current);
 
-    return acc;
+    return total;
   }, {});
 }
-
-//   const result: GroupsMap<T> = {};
-
-//   items.forEach((item: T): void => {
-//     const valueStr = String(item[key]);
-
-//     if (!result[valueStr]) {
-//       result[valueStr] = [];
-//     }
-
-//     result[valueStr].push(item);
-//   });
-
-//   return result;
-// }
