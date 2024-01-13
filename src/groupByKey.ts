@@ -6,10 +6,12 @@ export function groupByKey<R>(items: R[], key: keyof R): GroupsMap<R> {
   const sortedObjects: { [key: string]: R[] } = {};
 
   items.forEach((obj: R) => {
-    if ((obj[key] as string) in sortedObjects) {
-      sortedObjects[obj[key] as string].push(obj);
+    const keyInObj = obj[key] as string;
+
+    if ((keyInObj) in sortedObjects) {
+      sortedObjects[keyInObj].push(obj);
     } else {
-      sortedObjects[obj[key] as string] = [obj];
+      sortedObjects[keyInObj] = [obj];
     }
   });
 
