@@ -5,7 +5,7 @@ type GroupsMap<T> = {
 export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   return items.reduce(
     (acc: GroupsMap<T>, obj: T) => {
-      const keyValue = obj[key] as string;
+      const keyValue = String(obj[key]);
 
       if (!(acc[keyValue])) {
         acc[keyValue] = [];
