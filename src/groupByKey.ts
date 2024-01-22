@@ -2,27 +2,13 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-interface Item {
-  'id': number,
-  'color': string,
-  'country': string,
-}
+export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
+  return items.reduce((result: GroupsMap<T>, item: T) => {
+    const keyValue = item[key] as string;
 
-export function groupByKey(
-  items: Item[],
-  key: keyof Item,
-): GroupsMap<Item> {
-  const result: GroupsMap<Item> = {};
-
-  items.map((item: Item) => {
-    if (!(Object.hasOwn(result, item[key]))) {
-      result[item[key] as keyof typeof result] = [
-        ...items.filter((itemFilter: Item) => itemFilter[key] === item[key]),
-      ];
-    }
-
-    return undefined;
-  });
-
-  return result;
+    return {
+      ...result,
+      [keyValue]: (result[keyValue] || []).concat(item),
+    };
+  }, {});
 }
