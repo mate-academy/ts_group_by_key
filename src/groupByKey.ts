@@ -7,7 +7,7 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
 
   // eslint-disable-next-line no-restricted-syntax
   for (const el of items) {
-    if (!(el[key] in result)) {
+    if (!((el[key] as string) in result)) {
       const newGroup: T[] = [];
 
       // eslint-disable-next-line no-restricted-syntax
