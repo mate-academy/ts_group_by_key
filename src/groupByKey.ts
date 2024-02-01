@@ -1,5 +1,5 @@
-type GroupsMap<T> = {
-  [key: string]: T[];
+type GroupsMap<Item> = {
+  [key: string]: Item[];
 };
 
 export function groupByKey<Item>(
@@ -8,14 +8,15 @@ export function groupByKey<Item>(
 ): GroupsMap<Item> {
   const newObj: GroupsMap<Item> = {};
 
-  for (let i = 0; i < items.length; i += 1) {
-    const currentItem = items[i];
-    const keyValue = currentItem[key] as string;
+  items.forEach((item) => {
+    const keyValue = item[key] as string;
 
     if (!newObj[keyValue]) {
-      newObj[keyValue] = items.filter((item) => item[key] === keyValue);
+      newObj[keyValue] = [item];
+    } else {
+      newObj[keyValue].push(item);
     }
-  }
+  });
 
   return newObj;
 }
