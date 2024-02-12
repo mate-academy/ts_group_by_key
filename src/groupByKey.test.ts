@@ -1,8 +1,17 @@
 /* eslint-disable max-len */
-import students from './students.json';
 import books from './books.json';
 
 const { groupByKey } = require('./groupByKey');
+
+interface Student {
+  name: string;
+  age: number;
+  surname: string;
+  married: boolean;
+  grades: number[]
+}
+
+const students: Student[] = require('./students.json');
 
 describe('Function "groupByKey"', () => {
   test('should be declared', () => {
@@ -21,13 +30,12 @@ describe('Function "groupByKey"', () => {
   test('should group students by "age"', () => {
     const groupedData = groupByKey(students, 'age');
 
-    expect(Object.keys(groupedData))
-      .toEqual(['22', '23', '24', '26']);
+    expect(Object.keys(groupedData)).toEqual(['22', '23', '24', '26']);
 
-    expect(groupedData[22].map((student) => `${student.name} ${student.age}`))
+    expect(groupedData[22].map((student: Student) => `${student.name} ${student.age}`))
       .toEqual(['Willie 22', 'Glenn 22']);
 
-    expect(groupedData[26].map((student) => `${student.name} ${student.age}`))
+    expect(groupedData[26].map((student: Student) => `${student.name} ${student.age}`))
       .toEqual(['Jessica 26']);
   });
 
