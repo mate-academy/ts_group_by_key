@@ -2,22 +2,16 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-export function groupByKey(
-  items: [{ [key: string | number]: string }],
-  key: keyof GroupsMap<{ [key: string | number]: string }>,
-): object {
+export function groupByKey<K>(items: K[], key: keyof K): GroupsMap<K> {
   // write code here;
-  return items.reduce(
-    (acc: GroupsMap<{ [key: string | number]: string }>, el) => {
-      if (acc[el[key]]) {
-        return acc;
-      }
+  return items.reduce((acc: GroupsMap<K>, el) => {
+    if (acc[String(el[key])]) {
+      return acc;
+    }
 
-      return {
-        ...acc,
-        [el[key]]: items.filter((e) => e[key] === el[key]),
-      };
-    },
-    {},
-  );
+    return {
+      ...acc,
+      [String([el[key]])]: items.filter((e) => e[key] === el[key]),
+    };
+  }, {});
 }
