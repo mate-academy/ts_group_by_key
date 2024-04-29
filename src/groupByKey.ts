@@ -7,13 +7,13 @@ export function groupByKey<T extends object>(
   key: keyof T,
 ): GroupsMap<T> {
   return items.reduce((groupedData: GroupsMap<T>, item) => {
-    const valueOfKey: unknown = item[key];
+    const valueOfKey = String(item[key]);
 
-    if (!groupedData[String(valueOfKey)]) {
-      groupedData[String(valueOfKey)] = [];
+    if (!groupedData[valueOfKey]) {
+      groupedData[valueOfKey] = [];
     }
 
-    groupedData[String(valueOfKey)].push(item);
+    groupedData[valueOfKey].push(item);
 
     return groupedData;
   }, {});
