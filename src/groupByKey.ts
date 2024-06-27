@@ -14,20 +14,3 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
     return result;
   }, {} as GroupsMap<T>);
 }
-
-const books = [
-  { id: 1, color: 'red', country: 'Ukraine' },
-  { id: 1, color: 'red', country: 'Italy' },
-  { id: 1, color: 'green', country: 'Ukraine' },
-];
-
-groupByKey(books, 'color') === {
-  'red': [
-    { id: 1, color: 'red', country: 'Ukraine' },
-    { id: 1, color: 'red', country: 'Italy' },
-  ],
-  'green': [
-    { id: 1, color: 'green', country: 'Ukraine' },
-  ],
-}
-
