@@ -9,9 +9,8 @@ export function groupByKey<T extends { [key: string]: string }>(
   return items.reduce((acc, item) => {
     const prev = acc[item[key]] ?? [];
 
-    return {
-      ...acc,
-      [item[key]]: [...prev, item],
-    };
+    acc[item[key]] = [...prev, item];
+
+    return acc;
   }, {} as GroupsMap<T>);
 }
