@@ -3,5 +3,5 @@ type GroupsMap<T> = {
 };
 
 export function groupByKey(items, key) {
-  // write code here;
+
 }
