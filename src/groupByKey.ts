@@ -1,7 +1,15 @@
+/* eslint-disable padding-line-between-statements */
 type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-export function groupByKey(items, key) {
-  // write code here;
+export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
+  return items.reduce((acc: GroupsMap<T>, item: T) => {
+    const groupKey = item[key] as unknown as string;
+    if (!acc[groupKey]) {
+      acc[groupKey] = [];
+    }
+    acc[groupKey].push(item);
+    return acc;
+  }, {});
 }
