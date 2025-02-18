@@ -1,37 +1,25 @@
-# Group by key
+# Group by Key
 
-Implement a function `groupByKey` that takes an array of similar objects 
-(`books`, `students`, etc.) and a string `key` that is one of possible item 
-keys (`key: keyof T`). The function returns an object where all the items are
-grouped by values stored under a given `key` (see the examples).
-```js
-const books = [
-  { id: 1, color: 'red', country: 'Ukraine' },
-  { id: 1, color: 'red', country: 'Italy' },
-  { id: 1, color: 'green', country: 'Ukraine' },
-;
-```
-```js
-// Group books by color
-groupByKey(books, 'color') === {
-  'red': [
-    { id: 1, color: 'red', country: 'Ukraine' },
-    { id: 1, color: 'red', country: 'Italy' },
-  ],
-  'green': [
-    { id: 1, color: 'green', country: 'Ukraine' },
-  ],
-}
-```
-```js
-// group books by country
-groupByKey(books, 'country') === {
-  'Ukraine': [
-    { id: 1, color: 'red', country: 'Ukraine' },
-    { id: 1, color: 'green', country: 'Ukraine' },
-  ],
-  'Italy': [
-    { id: 1, color: 'red', country: 'Italy' },
-  ],
-}
-```
+## 🎮 About the Project
+A **TypeScript utility function** that organizes data efficiently.  
+The project implements a function **`groupByKey`**, which:  
+- **Takes** an **array of similar objects** and a **string `key`**  
+- **Returns** an **object** where all items are grouped by their corresponding `key` values  
+
+## 🚀 Tech Stack
+- **TypeScript** (Ensuring strong typing and scalability)  
+
+## 🛠️ Tools & Dependencies
+- **Jest** – Unit testing framework  
+- **ESLint** – Code quality and linting  
+- **Husky** – Git hooks automation  
+- **Prettier** – Code formatting  
+- **Babel** – JavaScript compiler  
+
+## 📌 Features
+✅ Groups objects by a given key efficiently  
+✅ Supports dynamic keys for flexibility  
+✅ Ensures type safety with TypeScript  
+
+## 📜 License
+This project is forked from 💻 [Mate Academy](https://github.com/mate-academy/ts_group_by_key)
