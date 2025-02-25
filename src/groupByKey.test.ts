@@ -2,7 +2,7 @@
 import students from './students.json';
 import books from './books.json';
 
-const { groupByKey } = require('./groupByKey');
+import { groupByKey } from './groupByKey';
 
 describe('Function "groupByKey"', () => {
   test('should be declared', () => {
