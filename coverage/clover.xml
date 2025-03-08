@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1741452202689" clover="3.2.0">
+  <project timestamp="1741452202689" name="All files">
+    <metrics statements="6" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="1" elements="9" coveredelements="6" complexity="0" loc="6" ncloc="6" packages="1" files="1" classes="1"/>
+    <file name="groupByKey.js" path="C:\Users\grzep\projects\ts_group_by_key\src\groupByKey.js">
+      <metrics statements="6" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="5" count="6" type="stmt"/>
+      <line num="7" count="6" type="stmt"/>
+      <line num="8" count="4" type="cond" truecount="0" falsecount="2"/>
+      <line num="9" count="0" type="stmt"/>
+    </file>
+  </project>
+</coverage>
