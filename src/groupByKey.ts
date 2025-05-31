@@ -3,13 +3,16 @@ type GroupsMap<T> = {
 };
 
 export function groupByKey(items: any[], key: string): GroupsMap<any> {
-  const groups: GroupsMap<any> = {};
+  const groups: GroupsMap<(typeof items)[0]> = {};
 
   items.forEach((item) => {
-    const value = item[key];
+    const group = item[key];
 
-    groups[value] = groups[value] || [];
-    groups[value].push(item);
+    if (groups[group]) {
+      groups[group].push(item);
+    } else {
+      groups[group] = [item];
+    }
   });
 
   return groups;
