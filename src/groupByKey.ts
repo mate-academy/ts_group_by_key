@@ -6,18 +6,24 @@ export function groupByKey<T extends object>(
   items: T[],
   key: keyof T,
 ): GroupsMap<T> {
-  const uniqueValues = [];
-  const result: GroupsMap<T> = {};
+  const map = new Map<string, T[]>();
 
   for (const item of items) {
-    if (!uniqueValues.includes(item[key])) {
-      uniqueValues.push(item[key]);
+    const rawKey = item[key];
+    const stringKey = String(rawKey);
+
+    if (!map.has(stringKey)) {
+      map.set(stringKey, []);
     }
+
+    map.get(stringKey)!.push(item);
   }
 
-  for (const value of uniqueValues) {
-    result[value] = items.filter((item) => item[key] === value);
-  }
+  const result: GroupsMap<T> = {};
+
+  map.forEach((value, mapKey) => {
+    result[mapKey] = value;
+  });
 
   return result;
 }
