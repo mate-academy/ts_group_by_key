@@ -10,20 +10,16 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
 
   const objectGrouped: GroupsMap<T> = {};
 
-  const valuesOfKey: any[] = [];
+  if (items.length === 0) {
+    return {};
+  }
 
   items.forEach((item: T) => {
-    if (!valuesOfKey.includes(item[key])) {
-      valuesOfKey.push(item[key]);
+    if (!objectGrouped[item[key].toString()]) {
+      objectGrouped[item[key].toString()] = items.filter((t: T) => {
+        return t[key] === item[key];
+      });
     }
-  });
-
-  valuesOfKey.forEach((valueOfKey: any): void => {
-    const valueOfKeyString = valueOfKey.toString();
-
-    objectGrouped[valueOfKeyString] = items.filter((item: T) => {
-      return item[key] === valueOfKey;
-    });
   });
 
   return objectGrouped;
