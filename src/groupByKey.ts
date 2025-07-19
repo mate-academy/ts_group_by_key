@@ -4,7 +4,7 @@ type GroupsMap<T, K extends keyof T> = {
 
 export function groupByKey<T, K extends keyof T>(
   items: T[],
-  key: keyof K
+  key: K
 ): GroupsMap<T, K> {
   const newArr = {} as GroupsMap<T, K>;
 
