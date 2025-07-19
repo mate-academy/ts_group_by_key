@@ -1,7 +1,22 @@
-type GroupsMap<T> = {
-  [key: string]: T[];
+type GroupsMap<T, K extends keyof T> = {
+  [P in string & `${T[K]}`]: T[];
 };
 
-export function groupByKey(items, key) {
-  // write code here;
+export function groupByKey<T, K extends keyof T>(
+  items: T[],
+  key: K
+): GroupsMap<T, K> {
+  const newArr = {} as GroupsMap<T, K>;
+
+  for (const item of items) {
+    const keyValue = String(item[key]) as keyof GroupsMap<T, K>;
+
+    if (!newArr[keyValue]) {
+      newArr[keyValue] = [];
+    }
+
+    newArr[keyValue].push(item);
+  }
+
+  return newArr;
 }
