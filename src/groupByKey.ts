@@ -2,9 +2,11 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-export function groupByKey<T>(items: T[], key: []): GroupsMap<T> {
+export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   return items.reduce((acc: GroupsMap<T>, item: T) => {
-    const groupKey = String(item[key]);
+    const value = item[key];
+    const groupKey =
+      value !== undefined && value !== null ? String(value) : 'undefined';
 
     if (!acc[groupKey]) {
       acc[groupKey] = [];
@@ -13,5 +15,5 @@ export function groupByKey<T>(items: T[], key: []): GroupsMap<T> {
     acc[groupKey].push(item);
 
     return acc;
-  }, {});
+  }, {} as GroupsMap<T>);
 }
