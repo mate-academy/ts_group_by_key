@@ -1,7 +1,9 @@
-type GroupsMap<T> = {
-  [key: string]: T[];
-};
+export function groupByKey<T>(items: T[], key: keyof T): Record<string, T[]> {
+  return items.reduce<Record<string, T[]>>((acc, curr) => {
+    const currKey = String(curr[key]);
 
-export function groupByKey(items, key) {
-  // write code here;
+    (acc[currKey] ??= []).push(curr);
+
+    return acc;
+  }, {});
 }
