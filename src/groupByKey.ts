@@ -1,11 +1,11 @@
-type GroupsMap<T> = {
+export type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-function groupByKey<T>(arg: T[], key: keyof T): GroupsMap<T> {
+export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   const obj: GroupsMap<T> = {};
 
-  for (const el of arg) {
+  for (const el of items) {
     const value = String(el[key]);
 
     if (!obj[value]) {
