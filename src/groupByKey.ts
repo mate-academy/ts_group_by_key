@@ -11,14 +11,13 @@ export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   const result: GroupsMap<T> = {};
 
   for (const item of items) {
-    const value = item[key];
+    const value = String(item[key]);
 
-    const valueS = String(value);
-
-    if (!result[valueS]) {
-      result[valueS] = [];
-      result[valueS].push(item);
+    if (!result[value]) {
+      result[value] = [];
     }
+
+    result[value].push(item);
   }
 
   return result;
