@@ -2,6 +2,18 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-export function groupByKey(items, key) {
+export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
   // write code here;
+
+  return items.reduce((acc, item) => {
+    const groupName = String(item[key]);
+
+    if (!acc[groupName]) {
+      acc[groupName] = [];
+    }
+
+    acc[groupName].push(item);
+
+    return acc;
+  }, {} as GroupsMap<T>);
 }
