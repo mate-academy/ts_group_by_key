@@ -2,6 +2,31 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-export function groupByKey(items, key) {
-  // write code here;
+// Додаємо generic-тип <T> для функції,
+// щоб вона знала, з яким типом об'єктів працює.
+// items — це масив об'єктів типу T[].
+// key — це рядок, який обов'язково є одним із ключів об'єкта T (keyof T).
+export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
+  // Використовуємо метод reduce,щоб обійти всі елементи,зібрати їх в один об.
+  // Початковим значенням (акумулятором) передаємо порожній об'єкт `{}`,
+  // привівши його до типу GroupsMap<T>.
+  return items.reduce((accumulator, item) => {
+    // Отримуємо значення ключа для поточного об'єкта.
+    // Оскільки ключ в об'єкті може бути не лише рядком,
+    // ми примусово перетворюємо його на String,
+    // щоб він міг бути ключем в об'єкті GroupsMap.
+    const groupKey = String(item[key]);
+
+    // Перевіряємо, чи немає ще такої групи (ключа) в нашому об'єкті-акум.
+    if (!accumulator[groupKey]) {
+      // Якщо групи немає, створюємо для неї новий порожній масив.
+      accumulator[groupKey] = [];
+    }
+
+    // Додаємо поточний об'єкт (item) до відповідного масиву групи.
+    accumulator[groupKey].push(item);
+
+    // Обов'язково повертаємо акумулятор для наступної ітерації циклу reduce.
+    return accumulator;
+  }, {} as GroupsMap<T>);
 }
