@@ -5,8 +5,8 @@ type GroupsMap<T> = {
 export function groupByKey<T>(
   items: T[],
   key: keyof T,
- ): Record<string, T[]> {
-  const result: Record<string, T[]> = {};
+ ): GroupsMap<T> {
+  const result: GroupsMap<T> = {};
 
   for (const item of items) {
     const groupName = String(item[key]);
