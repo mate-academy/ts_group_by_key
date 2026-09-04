@@ -2,15 +2,16 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-export function groupByKey<T>(items: Object[], key: string): GroupsMap<T> {
-  return items.reduce((previous: any, current: any) => {
+export function groupByKey<T>(items: T[], key: keyof T): GroupsMap<T> {
+  return items.reduce((previous: Record<string, T[]>, item: T) => {
     const previousCopy = { ...previous };
+    const itemKey = String(item[key]);
 
-    if (!previousCopy[current[key]]) {
-      previousCopy[current[key]] = [];
+    if (!previousCopy[itemKey]) {
+      previousCopy[itemKey] = [];
     }
 
-    previousCopy[current[key]].push(current);
+    previousCopy[itemKey].push(item);
 
     return previousCopy;
   }, {});
