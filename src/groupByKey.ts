@@ -9,10 +9,13 @@ export function groupByKey<T, K extends keyof T>(
   const groupedItems: GroupsMap<T> = {};
 
   for (const item of items) {
-    const value = item[key];
     const groupKey = String(item[key]);
 
-    groupedItems[groupKey] = items.filter((el) => el[key] === value);
+    if (!groupedItems[groupKey]) {
+      groupedItems[groupKey] = [];
+    }
+
+    groupedItems[groupKey].push(item);
   }
 
   return groupedItems;
