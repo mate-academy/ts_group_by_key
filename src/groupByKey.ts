@@ -2,15 +2,15 @@ type GroupsMap<T> = {
   [key: string]: T[];
 };
 
-export function groupByKey<T, K extends keyof T>(
+export function groupByKey<T>(
   items: T[],
-  key: K & (T[K] extends string | number ? K : never),
+  key: keyof T,
 ): GroupsMap<T> {
   // write code here;
   const result: GroupsMap<T> = {};
 
   items.forEach((item): void => {
-    const resultKey = item[key];
+    const resultKey = String(item[key]);
 
     if (Object.hasOwn(result, resultKey)) {
       result[resultKey].push(item);
